@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Задача 4.</h2>
+    <p>
+        Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+    </p>
+    <script>
+        //let question = prompt ("Визначимо скільки метрів та кілометрів в заданій довжині в сантиметрах?")
+        let cm = parseInt (prompt ("Напишіть потрібну довжину в сантиметрах", "0"));
+        const cmMeter = 100;
+        const cmKilometr = 100000;
+        let resMeter = cm / cmMeter;
+        let resKilometr = cm / cmKilometr;
+        document.write (`${cm}сантиметр(-ів) це - ${resMeter} метрів та ${resKilometr} кілометрів`)
+        //alert (`${cm}сантиметр(-ів) це - ${resMeter} метрів та ${resKilometr} кілометрів`)
+
+        
+    </script>
+</body>
+</html>

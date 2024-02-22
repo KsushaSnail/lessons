@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 0</title>
+</head>
+<body>
+    <h2>Задача 0</h2>
+        <h3>Обчислити значення виразів</h3>
+        <ol>
+            <li>
+                S1=a+12+b
+            </li>
+            <li>
+                S2= &#8730;(a+b/2a)
+            </li>
+            <li>
+                S3=&#8731;(a+b)c 
+            </li>
+            <li>
+                S4=sin(a/-b)
+            </li>
+        </ol>
+        <script>
+            let a = parseInt (prompt ("Напишіть перше число", "0"));
+            let b = parseInt (prompt ("Напишіть друге число", "0"));
+            let c = parseInt (prompt ("Напишіть третє число", "0"));
+            let resOne = a + 12 + b;
+            let resSqrt = Math.sqrt((a + b)/(2 * a));
+            let resCbrt = Math.cbrt ((a+b) * c);
+            let resSin = Math.sin (a/-b);
+            document.write (`
+                <h3> Відповідь: </h3>
+                <p>  Перше число - ${a}, друге число - ${b}, третє число - ${c}</p>
+                <ol>
+                    <li>${resOne}</li>
+                    <li>${resSqrt}</li>
+                    <li>${resCbrt}</li>
+                    <li>${resSin}</li>
+                    
+                 </ol>
+            `)
+        </script>
+    
+
+    
+</body>
+</html>
