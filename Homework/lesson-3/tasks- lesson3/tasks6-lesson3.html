@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 6</title>
+</head>
+<body>
+    <h2>Задача 6</h2>
+    <p>
+        З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+    </p>
+    <script>
+        let weekDayNumber = parseInt (prompt ("Напишіть номер дня тижня", "1-7"));
+        let weekDay
+            switch (weekDayNumber) {
+                    case 1: 
+                    weekDay = 'Понеділок / Montag'
+                    break;
+                    case 2: 
+                    weekDay = 'Вівторок / Dienstag'
+                    break;
+                    case 3: 
+                    weekDay = 'Середа / Mittwoch'
+                    break;
+                    case 4: 
+                    weekDay = 'Четверг / Donnerstag'
+                    break;
+                    case 5: 
+                    weekDay = 'Пятниця / Freitag'
+                    break;
+                    case 6: 
+                    weekDay = 'Субота / Samstag'
+                    break;
+                    case 7: 
+                    weekDay = 'Неділя / Sonntag'
+                    break;}
+            alert (`Це - ${weekDay}!`)
+            //document.write (`Це - ${weekDay}!`)
+    </script>
+</body>
+</html>
