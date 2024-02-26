@@ -13,29 +13,15 @@
     <script>
         let numberRandom = Math.floor(5 * Math. random()) + 1
         console.log(numberRandom);
-        let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));
-        let userNumberSecond
-        if (userNumber == numberRandom)
-                alert ('Круто! Ви вгадали')
-        else if (userNumber > numberRandom || userNumber < numberRandom)
-            alert ('Не вийшло! Спробуйте ще раз!')
-        userNumberSecond = parseInt (prompt (" Спробуйте ще раз!", "0"));
-        if (userNumberSecond == numberRandom)
-            alert ('Перемога!')
-        else
+        for (let i = 1; i <= 2; i++) {
+           let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));//число користувача
+           if (userNumber == numberRandom)
+               alert ('Круто! Ви вгадали')
+            else if (userNumber > numberRandom || userNumber < numberRandom)
+                alert ('Не вийшло! Спробуйте ще раз!')
+            else 
             alert ('Спроби закінчились. Пощастить наступного разу.')
-
-
-
-        // for (let i = 1; i <= 2; i++) {
-        //     let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));//число користувача
-        //     if (userNumber == numberRandom)
-        //         alert ('Круто! Ви вгадали')
-        //     else if (userNumber > numberRandom || userNumber < numberRandom)
-        //         alert ('Не вийшло! Спробуйте ще раз!')
-        //     else 
-        //     alert ('Спроби закінчились. Пощастить наступного разу.')
-        // }
+         }
     </script>
 </body>
 </html>
