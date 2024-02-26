@@ -11,17 +11,31 @@
         Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
     </p>
     <script>
-        let numberRandom = Math.floor(5 * Math. random()) + 1// випадкове число
+        let numberRandom = Math.floor(5 * Math. random()) + 1
         console.log(numberRandom);
-        for (let i = 1; i < 3; i++) {
-            let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));//число користувача
-            if (userNumber == numberRandom)
+        let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));
+        let userNumberSecond
+        if (userNumber == numberRandom)
                 alert ('Круто! Ви вгадали')
-            else if (userNumber > numberRandom || userNumber < numberRandom)
-                alert ('Не вийшло! Спробуйте ще раз!')
-            else 
+        else if (userNumber > numberRandom || userNumber < numberRandom)
+            alert ('Не вийшло! Спробуйте ще раз!')
+        userNumberSecond = parseInt (prompt (" Спробуйте ще раз!", "0"));
+        if (userNumberSecond == numberRandom)
+            alert ('Перемога!')
+        else
             alert ('Спроби закінчились. Пощастить наступного разу.')
-        }
+
+
+
+        // for (let i = 1; i <= 2; i++) {
+        //     let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));//число користувача
+        //     if (userNumber == numberRandom)
+        //         alert ('Круто! Ви вгадали')
+        //     else if (userNumber > numberRandom || userNumber < numberRandom)
+        //         alert ('Не вийшло! Спробуйте ще раз!')
+        //     else 
+        //     alert ('Спроби закінчились. Пощастить наступного разу.')
+        // }
     </script>
 </body>
 </html>
