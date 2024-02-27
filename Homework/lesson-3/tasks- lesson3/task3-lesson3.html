@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Задача 3</title>
 </head>
 <body>
     <h2>Задача 3</h2>
+
     <p>
         Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
     </p>
@@ -17,13 +18,13 @@
         let userNumberSecond
         if (userNumber == numberRandom)
             alert ('Круто! Ви вгадали')
-        else if (userNumber > numberRandom || userNumber < numberRandom)
-           userNumberSecond = parseInt (prompt ('Не вийшло! Спробуйте ще раз!'))
-        else if (userNumberSecond == numberRandom)
-            alert ('Ви вгадали')
-            if (userNumber !=numberRandom && userNumberSecond !== numberRandom )
-            alert ('Спроби закінчились. Пощастить наступного разу.')
-    
+        else 
+            {userNumberSecond = parseInt (prompt ('Не вийшло! Спробуйте ще раз!'))
+            if  (userNumberSecond == numberRandom)
+                alert ('Ви вгадали')
+            else 
+                alert ('Спроби закінчились. Пощастить наступного разу.')
+            }
 
         // for (let i = 1; i <= 2; i++) {
         //    let userNumber = parseInt (prompt ("Вгадайте число від 1 до 5", "0"));//число користувача
