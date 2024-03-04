@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 12</title>
+    <style>
+        p{
+            font-size: 24px;
+        }
+        .page {
+            display: flex;
+            justify-content: center;
+            background-color:#6adcdc;
+            font-size: 64px;
+            color: rgb(233 30 136); 
+        }
+        .page p {
+            font-size: 64px;
+        }
+        .item{
+            display: flex;
+             background-color:rgb(106, 220, 220);
+            justify-content: center;
+            width: fit-content;}
+    </style>
+</head>
+<body>
+    <h2>Задача 12</h2>
+    <p>
+        Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. 
+        Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, 
+        три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).
+    </p>
+    <script>
+    let resFruits=1
+    let win = ''
+    document.write(`<div class="item">`)
+        for(let img = 1; img<=3; img++)
+        { let random = 1 +Math.floor(Math.random()*(4))
+            switch (random){
+                case 1: 
+                    resFruits = `<img src="/lesson-5/image/coconut-1.png" alt="coconut" width="350" height="350">`
+                    win = win + random
+                    break;
+                case 2: 
+                    resFruits = ` <img src="/lesson-5/image/watermelon-2.png" alt="watermelon" width="350" height="350">`
+                    win = win + random
+                    break;
+                case 3: 
+                    resFruits = `<img src="/lesson-5/image/bananas-3.png" alt="bananas" width="350" height="350">`
+                    win = win + random
+                    break;
+                case 4: 
+                    resFruits = `<img src="/lesson-5/image/cherry-4.png" alt="bananas" width="350" height="350">`
+                    win = win + random
+                    break;
+            }
+            document.write(`<div class="item-img">${resFruits} </div>`)
+            document.write(`<div class="page">`)
+            switch (win){
+                case '111':
+                document.write(`<p>Coconut! Ваш вийграш 100 грн!</p>`)
+                break;
+                case '222':
+                document.write(`<p>Watermelon! Ваш вийграш 200 грн!</p>`)
+                break;
+                case '333':
+                document.write(`<p>Bananas! Ваш вийграш 500 грн!</p>`)
+                break;
+                case '444':
+                document.write(`<p>Cherry! Ваш вийграш 500 грн!</p>`)
+                break;
+            }
+            document.write(`</div>`)
+        }
+    document.write(`</div>`)
+    </script>
+</body>
+</html>

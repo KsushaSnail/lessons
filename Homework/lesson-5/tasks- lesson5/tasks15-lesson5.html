@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 15</title>
+</head>
+<body>
+    <h2>Задача 15</h2>
+    <p>
+        Користувача поступово вводить показники температури протягом року. Знайти середню температуру.
+    </p>
+    <script>
+   let sumTemperatur = 0
+   for (let m = 1; m <=12; m++){
+    let monthTemperatur = parseFloat (prompt(`Ввведіть температуру за місяць  ${m}`))
+    sumTemperatur+= monthTemperatur
+    }
+    let midTemperature = sumTemperatur / 12
+    alert (`Середня температура за рік - ${midTemperature.toFixed(1)}°`)
+    </script>
+</body>
+</html>

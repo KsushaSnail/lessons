@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 10</title>
+</head>
+<body>
+    <h2>Задача 10</h2>
+    <p>
+        Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.
+    </p>
+    
+    <script>
+        let minNumber = parseInt(prompt('Виберіть діапазон чисел, Початок (min)'))
+        let maxNumber = parseInt(prompt('Виберіть діапазон чисел, Кінець (max)'))
+        let resNumber = 0
+       for (; minNumber <= maxNumber; minNumber++){
+        if (minNumber % 2 !=0)
+       resNumber += minNumber}
+        alert(`Сума всіх непарних чисел - ${resNumber}`)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2</title>
+    <style>
+.item {
+    margin: 5px;
+  }
+    </style>
+</head>
+<body>
+    <h2>Задача 2</h2>
+    <p>
+        Створити 10 елементів для введення цін продуктів
+    </p>
+     <script>//код работает, только стиль дивам сделать надо
+        document.write('<div>')
+       for (let lebel = 1; lebel<=10; lebel++){
+        document.write(`<div class="item"> <label for="name">
+        # Product ${lebel}
+        <input type="text">
+        </label> </div>`)
+       }
+       document.write('</div>')
+    </script>
+</body>
+</html>

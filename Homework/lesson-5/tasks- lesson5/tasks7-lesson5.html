@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 7</title>
+</head>
+<body>
+    <h2>Задача 7</h2>
+    <p>
+     Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+    </p>
+    <img src="/lesson-5/image/task5.png" alt="">
+    <script>
+        let userParagraf = parseInt(prompt('Кількість абзаців?'))
+        for (let h =1; h <= userParagraf; h++)
+          { document.write (`<h3>Заголовок № ${h}</h3>`)
+            for (let p = 1; p <= h; p++ )
+        document.write (`<p> Розділ № ${p}, параграф № ${p}</p>`)}
+    </script>
+</body>
+</html>

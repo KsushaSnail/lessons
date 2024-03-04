@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 8</title>
+</head>
+<body>
+    <h2>Задача 8</h2>
+<p>
+    Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача 
+    (використати confirm).
+</p>
+    
+    <script>
+        let minRangNumber = parseInt(prompt('Виберіть діапазон чисел, Початок (min)'))
+        let maxRangNumber = parseInt(prompt('Виберіть діапазон чисел, Кінець (max)'))
+        alert(`Загадайте число у вибраному діапазоні ${minRangNumber}-${maxRangNumber}, а ми постараємося його вгадати`)
+       for (let i =1; i <=3; i++){
+            let num = minRangNumber+Math.floor(Math.random()*(maxRangNumber-minRangNumber+1))
+            console.log(num)
+            if (confirm (`Це ваше число? - ${num}`))
+           { alert (`Компютер його вгадав з ${i} спроби`) 
+            break;}
+        }
+    </script>
+</body>
+</html>

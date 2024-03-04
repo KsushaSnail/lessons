@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 14</title>
+</head>
+<body>
+    <h2>Задача 14</h2>
+    <p>
+        Каса. Користувачу повідомляють суму,
+        яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів
+        (кожного разу користувачу повідомляють, яку ще суму потрібно ввести). 
+    </p>
+    <script>
+   let random = 1 +Math.floor(Math.random()*(10000))
+   while(random > 0){ 
+        alert (`До сплати  - ${random} грн`)
+        let userPay = parseFloat(prompt(`Залишилось сплатити ${random}грн.Ввведіть суму для оплати`))
+        if (random >= userPay) 
+            {random -= userPay
+            if (random==0)
+            alert ('Все сплачено.')}
+    }
+    </script>
+</body>
+</html>
