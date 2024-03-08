@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача № 4 </title>
+</head>
+<body>
+    <h2>Задача 4</h2>
+    <p> 
+        З клавіатури вводяться два числа N i M (N менше M). 
+        <br>
+        Вивести на екран числа
+        N---M
+        <br>
+        N+1 --- M-1
+        <br>
+        N+2 --- M-2
+        <br>
+        N+3 --- M-3
+        
+    </p>
+    <script>
+        let numN = parseInt (prompt ('Number N'))
+        let numM = parseInt (prompt ('Number M'))
+        document.write(`число перше - ${numN} --- ${numM} - число друге `)
+        for (let i= 1; i <= 3; i++)
+        {
+           let resNumN = numN + i;
+            let resnNumM = numM - i;
+            
+            document.write(` <br> ${resNumN} --- ${resnNumM}`)
+        }
+        
+    </script>
+</body>
+</html>
