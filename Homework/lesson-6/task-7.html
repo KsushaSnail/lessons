@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 7</title>
+    <style>
+        .item {
+            margin: 20px;
+            padding: 20px;
+        }
+        .rowO {
+            display: flex;
+            margin-left: 30px;
+            margin-right: 30px;
+            padding-left: 0px;
+            padding-right: 32px;
+            justify-content: space-around;
+            color: #21ca21;
+            font-size: 22px;
+            background-color: #e91e63f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Задача 7</h2>
+    <p>
+        2.1. Відобразити трикутник за допомогою символів «о»
+    </p>
+    <script>
+        const rowSumbol = 7;
+        let sumbol = 'o';
+        let resRowSumbol = ' '
+        document.write (`<div class="item">`)
+           for (let row = 1; row <= 7; row++){
+            resRowSumbol+= sumbol
+           document.write (` <div class="rowO">${resRowSumbol} <br></div>`)
+        }
+        document.write (`</div>`)
+    </script>
+</body>
+</html>
