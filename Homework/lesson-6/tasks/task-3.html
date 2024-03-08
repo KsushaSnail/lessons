@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача №3 </title>
+</head>
+<body>
+    <h2>Задача 3</h2>
+    <p> 
+        Інвестор вклав  тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без оподаткування).
+    </p>
+
+    <script>
+        let userDeposit = parseInt(parseInt(prompt ('Сума вкладу, тис. грн')))// Інвестор вклав
+        const PER_CENT = 20;
+        const DAY_YEAR = 365;
+        let res = 0;
+        for (let year = 1; year<= 20; year++)
+        {
+            let  sumDeposit = ((userDeposit*PER_CENT*DAY_YEAR)/365)/100;//загальна формула підрахунку проценту за рік
+           res +=sumDeposit
+        }
+        document.write (`Очікуваний прибуток за 20 років - ${res} тис. грн`)
+    </script>
+</body>
+</html>

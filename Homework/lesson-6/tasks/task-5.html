@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5</title>
+</head>
+<body>
+    <h2>Задача 5</h2>
+    <p>
+        На складі зберігається певна кількість ящиків з яблуками (наприклад, 15). Коли під’їде машина для завантаження, 
+        попросити користувача ввести, скільки ящиків завантажити у першу машину, у другу і т. д., поки на складі не закінчаться ящики з яблуками. 
+        Передбачити той випадок, коли користувач вводить кількість, що перевищує поточну кількість ящиків на складі.
+    </p>
+    <script>
+    let randomBox = 1 +Math.floor(Math.random()*(100))
+   while(randomBox > 0){ 
+        alert (`ящиків з яблуками  - ${randomBox} грн`)
+        let userBox = parseFloat(prompt(`На складi ${randomBox} ящиків з яблуками.Скільки Вам потрібно?`))
+        if (randomBox >= userBox) 
+            {randomBox -= userBox
+            if (randomBox===0)
+            alert ('Ящики з яблуками закінчились')}
+        else if (randomBox < userBox)
+        alert ('У нас немає такої кількості')//якщо більше вказав користувач
+
+    }
+    </script>
+</body>
+</html>
