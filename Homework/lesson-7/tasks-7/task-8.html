@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 8</title>
+    <style>
+        .item {
+            display: flex;
+            border-radius: 5px;
+            border: 2px solid #232323;
+            background-color: #e9e7e782;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            width: min-content;
+        }
+    
+    </style>
+</head>
+<body>
+    <h2>Задача 8</h2>
+    <p>
+        Створити функцію, яка виводить банер - у функцію передаються: зображення, заголовок та посилання, 
+        куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: &#60;a&#62; &#60;img src=”шлях”&#62; &#60;/a&#62;)
+    </p>
+    <script>
+        function showPicture(teitelImg, linkEnter, inkImage){
+            return(`<div class="item"><div><h2>${teitelImg}</h2></div><div><a href="${linkEnter}" target="_blank">${linkImage}</a></div> </div>`)
+        }
+        // let picture = showPicture(IMG_1)
+        let teitelImg = 'Мандруй країною'
+        let linkEnter = 'https://v-mandry.com/'
+        let randomNumImg = 1+ Math.floor(Math.random()*(3))
+          //  console.log (randomNumImg)
+        let linkImage = `<img src="/lesson-7/img/image${randomNumImg}.jpg" alt="img" width="300" height="200">`
+        let showBanner = showPicture(teitelImg, linkEnter, linkImage)
+        document.write (showBanner)
+    </script>
+</li>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Задача 4</h2>
+<p> 
+    Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: 
+    кількість парних, кількість додатних, кількість більших за 100.
+</p>
+<script>
+function getNumber(){    
+        let evenNum = 0
+        let positivNum = 0
+        let moreHundred = 0
+    for (let i=0; i < userNumber.length; i++) {
+        if (userNumber[i] % 2 === 0)
+            evenNum++
+        if (userNumber[i] > 0) 
+            positivNum++
+        if (userNumber[i] > 100) 
+            moreHundred++
+    }
+    return (`Кількість парних - ${evenNum}, кількість додатних - ${positivNum}, більше за сто - ${moreHundred} чисел`)
+}
+     let userNumber = []
+       for( let i = 1; i <=3; i++){
+        enterNumber = parseInt (prompt ('/ Введіть число'))
+        userNumber.push(enterNumber)
+       }
+        let res = getNumber (userNumber.length)
+        document.write (getNumber())
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2</title>
+</head>
+<body>
+    <h2>Задача 2</h2>
+    <p>
+        Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.  
+    </p>
+<script>
+    function getWhatADay(numDay){
+        let resDay
+        switch (numDay) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                resDay = 'der Arbeitstag / Це робочий день'
+                break;
+            case 6:
+            case 7:
+                resDay = 'das Wochenende / Це вихідний день'
+                break;
+        }
+        return resDay
+    }
+    let numDay = parseInt (prompt('Schreiben Sie die Tagesnummer / Ведіть номер дня', '1-7'))
+    let nameOfTheDay = getWhatADay(numDay)
+    document.write (nameOfTheDay)
+</script>
+</body>
+</html>

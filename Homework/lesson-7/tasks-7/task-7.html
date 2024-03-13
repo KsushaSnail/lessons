@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 7</title>
+</head>
+<body>
+        <h2>Задача 7</h2>
+    <p>
+        Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
+    </p> 
+    <script>
+   function getRandomImg () {
+            let randomNumImg = 1+ Math.floor(Math.random()*(4))
+            console.log (randomNumImg)
+            return `<img src="/lesson-7/img/img${randomNumImg}.png" alt="img" ">`
+    }
+    document.write(getRandomImg())
+    </script>
+</body>
+</html>

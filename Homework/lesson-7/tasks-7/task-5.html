@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5</title>
+</head>
+<body>
+    <h2>Задача 5</h2>
+<p>
+    Створити окремі функції, які переводять:  
+</p>
+<ol>
+    <li>Сантиметри у дюйми;</li>
+    <li>Кілограми у фунти;</li>
+    <li>Кілометри у милі.</li>
+</ol>
+<script> 
+//Сантиметри у дюйми;
+    function getInch (){
+        return (smUser * 0.393701).toFixed(2)
+    }
+    let smUser = parseFloat(prompt('Сантиметри'))
+    document.write(` ${smUser} см => ${getInch()} дюймів`)
+    //Кілограми у фунти;
+    function getPounds (){
+        return (userKg * 2.20462).toFixed(2)
+    }
+    let userKg = parseFloat(prompt('Кілограми'))
+    document.write(`<br> ${userKg} кг => ${getPounds()} фунти`)
+    //Кілометри у милі
+    function getMiles (){
+        return (userKm * 0.621371).toFixed(2)
+    }
+    let userKm = parseFloat(prompt('Кілометри'))
+    document.write(`<br> ${userKg} км => ${getMiles()} милі`)
+</script>
+</body>
+</html>

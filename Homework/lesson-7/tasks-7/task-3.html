@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Задача 3 </h2>
+    <p> 
+        Створити окремі функції, які для 4 чисел знаходять:
+    </p>
+    <ol>
+        <li>суму;</li>
+        <li>добуток;</li>
+        <li>середнє арифметичне;</li>
+        <li>мінімальне значення. </li>
+    </ol>
+    <script>
+        ///сума
+        function calkUserSum (){
+            let sum=0
+            for (let i = 0; i < userNumber.length; i++){
+            sum+=userNumber[i] 
+        }
+            return sum
+        }
+        ///добуток
+        function calcTheProduct (){
+            let product=1
+            for (let i = 0; i < userNumber.length; i++){
+            product*=userNumber[i] 
+        }
+            return product
+        }
+        //середнє арифметичне
+        function calcArithmeticMean () {
+            let sum =0
+            for (let i = 0; i < userNumber.length; i++){
+            sum += userNumber[i] }
+        return sum/4
+       }
+       //мінімальне значення.
+       function getminNmer (){
+        let minUser = userNumber[0]
+            for (let i = 0; i < userNumber.length; i++){
+                if (userNumber[i] < minUser)
+                minUser = userNumber[i]
+            }
+         return minUser
+       }
+       let userNumber = []
+       for( let i = 1; i <=4; i++){
+       let enterNumber = parseInt (prompt ('/ Введіть число'))
+        userNumber.push(enterNumber)
+       }
+        let resSum = calkUserSum (userNumber.length)
+        let resProduct = calcTheProduct(userNumber.length)
+        let arithmeticMean = calcArithmeticMean (userNumber.length)
+        let minNumer =  getminNmer(userNumber.length)
+     document.write (`Сума --- ${resSum} <br>Добуток --- ${resProduct}<br>Середнє арифметичне --- ${arithmeticMean} <br> Мінімальне значення --- ${minNumer}  `)
+
+    </script>
+</body>
+</html>

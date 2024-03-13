@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 0</title>
+</head>
+<body>
+    <h2>Задача 0</h2>
+    <p> 
+        Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+    </p>
+    <script>
+function getMonthNumber(monthNumber) {
+    let resMonth
+    monthNumber != 0
+        if ( monthNumber >=  1 && monthNumber <= 2  || monthNumber == 12)
+            resMonth = 'Це зима'
+            else if (monthNumber <= 5)
+        resMonth = 'Це весна'
+        else if (monthNumber <= 8)
+            resMonth = 'Це літо'
+        else if ( monthNumber <= 11)
+            resMonth ='Це осінь'
+        return resMonth
+}
+let monthNumber = parseInt (prompt('ВВедіть номер місяця', '1-12'))
+document.write(getMonthNumber(monthNumber))
+    </script>
+</body>
+</html>

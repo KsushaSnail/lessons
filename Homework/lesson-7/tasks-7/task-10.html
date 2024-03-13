@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 10</title>
+</head>
+<body>
+    <h2>Задача 10</h2>
+<p>
+    Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+</p>
+<script>
+     function calsArithmeticMeanTemperature(){
+            let count = 0
+            let sumTemperatur = 0
+            for (let i = 0; i < enterTemperature.length; i++){
+                if (enterTemperature[i] > 0)
+                sumTemperatur+= enterTemperature[i]
+                count++
+            }
+            return sumTemperatur/count
+        }
+        let enterTemperature = []
+       for( let i = 1; i <= 5; i++){
+        let userTemperature = parseFloat(prompt('/ Введіть показники температури'))
+        enterTemperature.push(userTemperature)
+       }
+       let resTemperatur = calsArithmeticMeanTemperature(enterTemperature.length)
+       document.write(`середнє значення для додатних показів температури - ${resTemperatur}`)
+</script>
+</body>
+</html>
