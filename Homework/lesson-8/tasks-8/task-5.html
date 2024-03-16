@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 6.</title>
+</head>
+<body>
+    <h2>Задача 6.</h2>
+    <p>
+        Дано послідовність цін товарів та назв (у окремих масивах). 
+        Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+    </p>
+    <script>
+        let priceProduct = [500, 200, 1000, 300, 225]
+        let productName = ['Wurst', 'Schokolade', 'Wein', 'Milch', 'Feta-Käse']
+        let howMuchMoney = parseFloat(prompt('Введіть суму грошей'))
+        let whatCanBuy = []
+        for (let i = 0; i < priceProduct.length; i++){
+            if (howMuchMoney >= priceProduct[i]){
+            whatCanBuy.push(productName[i])}
+        }
+        let minPrice = priceProduct[0]
+            for (let i = 0; i < priceProduct.length; ++i){
+                if (priceProduct[i] < minPrice)
+                minPrice = priceProduct[i]
+            }
+        if (minPrice > howMuchMoney)
+            document.write('Недостатньо коштів')
+        else document.write (`На вашу суму грошей - ${howMuchMoney} грн ,
+                        </br> Ви можете купити наступні товари - ${whatCanBuy}`)
+    </script>
+</body>
+</html>
