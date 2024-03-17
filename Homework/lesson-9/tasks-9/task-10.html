@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Задача 10.</h2>
+    <p>
+        Дано масив цін у грн. Податок складає 20%. 
+        Сформувати масив, який буде містити величину сплаченого податку у грн.
+    </p>
+    <script>
+        let priceArray = [501, 200, 400, 304, 225, 487]
+        let taxArray = priceArray.map( (price)=> (price*0.2).toFixed(1))
+        document.write(`Масив цін у грн --- ${priceArray} <br> Mасив який містить величину сплаченого податку у грн --- ${taxArray}`)
+    </script>
+</body>
+</html>

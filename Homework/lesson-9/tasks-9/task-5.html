@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5.</title>
+</head>
+<body>
+    <h2> Задача 5.</h2>
+<p>
+    Дано масив елементів. Знайти добуток додатних елементів
+</p>
+<script>
+     let arrayNew = [-102, 28, -89, 12, 34, -72]
+        let productNum = 1
+        for (let moreElement of arrayNew){
+            if (moreElement > 0)
+            productNum *= moreElement
+           
+        }
+        document.write(`Добуток додатних елементів --- ${productNum}`)
+</script>
+</body>
+</html>

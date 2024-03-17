@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 8.</title>
+</head>
+<body>
+        <h2> Задача 8.</h2>
+    <p>
+        Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+    </p>
+    <script>
+        let arrCarNumber = ['ВВ5678АХ', 'AH1234ВС', 'ТТ3456РЕ', 'AX7890DC', 'СС9012МО', 'AK1590DC']
+        let arrCarNumA =  arrCarNumber.filter((carNum) => carNum[0] === 'A')
+        document.write(`Масив номерів авто, що починаються на  «А» --- ${arrCarNumA}`)  
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 4.</title>
+</head>
+<body>
+        <h2> Задача 4.</h2>
+    <p>
+        Дано масив елементів. Вивести на екран елементи, що більші за 100
+    </p>
+    <script>
+        let arrayNew = [102, 28, 894, 89, 12, 354, 712, 65 ]
+        let arrMoreNum = []
+        for (let moreElement of arrayNew){
+            if (moreElement > 100)
+            arrMoreNum.push(moreElement)
+        }
+        document.write(`Eлементи, що більші за 100 --- ${arrMoreNum}`)
+    </script>
+</body>
+</html>

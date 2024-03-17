@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h2> Задача 7.</h2>
+    <p>
+        Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+    </p>
+    <script>
+        let arrayPrices = [200, 1100, 580, 2000, 500, 1500]
+        arrayPrices.forEach (
+            (element, ind, arrayPrices)=>{
+                if (element > 1000)
+                arrayPrices [ind] =element - (element * 0.3)
+            }
+        )
+        document.write(`Ціни товарів зі скидкою --- ${arrayPrices}`)
+    </script>
+</body>
+</html>

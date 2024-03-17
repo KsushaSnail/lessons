@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 6.</title>
+</head>
+<body>
+        <h2> Задача 6.</h2>
+    <p>
+        Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+    </p>
+    <script>
+        let arrayNum = [2, 4, 8, 1, 0, 5, 1]
+        arrayNum.forEach (
+            (element, ind, arrayNum)=> {
+                let firstElements = arrayNum[0]
+                if ( element > firstElements)
+                arrayNum [ind]*=2
+            }
+        )
+        document.write(`Новий масив --- ${arrayNum}`)
+    </script>
+</body>
+</html>
