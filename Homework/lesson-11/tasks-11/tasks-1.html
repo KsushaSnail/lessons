@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 1.</title>
+</head>
+<body>
+        <h2> Задача 1.</h2>
+    <p>
+        Знайти суми елементів у вказаній області
+    </p>
+    <p>
+        Дано масив чисел - [[38, 5, 36, 1], [60, 33, 65, 12], [55, 4,  61, 22], [35, 58, 9, 32]]
+    </p>
+    <script>
+        let arrayNumbers = [[38, 5, 36, 1], [60, 33, 65, 12], [55, 4,  61, 22], [35, 58, 9, 32]]
+        
+        // 1  номери рядків від 0 до половини, стовпці від 0 до половини</li>
+        let sum1= 0
+        for (let numRow = 0;  numRow <= 1; numRow++){
+            for (let numColum = 0; numColum < arrayNumbers[numRow].length/2; numColum++) {
+                sum1+=arrayNumbers[numRow][numColum];    
+            }
+        }
+        document.write (`<hr><br> Hомери рядків від 0 до половини, стовпці від 0 до половини --- ${sum1}`)
+
+        // 2    номери рядків від 0 до половини, стовпці від половини до кінця
+        let sum2= 0
+        for (let numRow = 0;  numRow <= 1; numRow++){
+            for (let numColum = 2; numColum < arrayNumbers[numRow].length; numColum++) {
+                sum2+=arrayNumbers[numRow][numColum];   
+            }
+        }
+        document.write (`<hr><br> Hомери рядків від 0 до половини, стовпці від половини до кінця --- ${sum2}`)
+       
+        // 3    номери рядків від половини до кінця, стовпці від 0 до половини
+        let sum3= 0
+        for (let numRow = 2;  numRow < arrayNumbers.length; numRow++){
+            for (let numColum = 0; numColum < arrayNumbers[numRow].length/2; numColum++) {
+                sum3+=arrayNumbers[numRow][numColum];
+            }
+        }
+        document.write (`<hr><br> Hомери рядків від половини до кінця, стовпці від 0 до половини --- ${sum3}`)
+        
+        // 4    номери рядків від половини до кінця , стовпці від половини до кінця
+        let sum4= 0
+        for (let numRow = 2;  numRow < arrayNumbers.length; numRow++){
+            for (let numColum = 2; numColum < arrayNumbers[numRow].length; numColum++) {
+                sum4+=arrayNumbers[numRow][numColum];
+            }
+        }
+        document.write (`<hr><br> Hомери рядків від половини до кінця, стовпці від половини до кінця --- ${sum4}`)
+        // 5    Суму парних рядків
+        let sumEvenRow= 0
+        for (let numRow = 1;  numRow < arrayNumbers.length; numRow+=2){
+            for (let numColum = 0; numColum < arrayNumbers[numRow].length; numColum++) {
+                sumEvenRow+=arrayNumbers[numRow][numColum];
+            }
+        }
+        document.write (`<hr><br> Сумa парних рядків --- ${sumEvenRow}`)
+        // 6    Суму непарних стовпців
+        let sumOddColum= 0
+        for (let numRow = 0;  numRow < arrayNumbers.length; numRow++){
+            for (let numColum = 0; numColum < arrayNumbers[numRow].length; numColum+=2) {
+                sumOddColum+=arrayNumbers[numRow][numColum];
+            }
+        }
+        document.write (`<hr><br> Сумa непарних стовпців --- ${sumOddColum}`)
+        // 7    У парних рядках – непарні стовпці, у непарних – парні.
+        let sumEvenRowOddColum = 0
+        for (let numRow = 1;  numRow < arrayNumbers.length; numRow+=2){
+            for (let numColum = 0; numColum < arrayNumbers[numRow].length; numColum+=2) {
+                sumEvenRowOddColum +=arrayNumbers[numRow][numColum];
+            }
+        }
+        let sumOddRowEvenColum = 0
+        for (let numRow = 0;  numRow < arrayNumbers.length; numRow+=2){
+            for (let numColum = 1; numColum < arrayNumbers[numRow].length; numColum+=2) {
+                sumOddRowEvenColum +=arrayNumbers[numRow][numColum];
+            }
+        }
+        document.write (`<hr><br> У парних рядках – непарні стовпці --- ${sumEvenRowOddColum},  у непарних – парні --- ${sumOddRowEvenColum}`)
+
+    </script>
+</body>
+</html>

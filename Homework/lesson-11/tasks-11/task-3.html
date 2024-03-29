@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 3.</title>
+</head>
+<body>
+        <h2> Задача 3.</h2>
+        <h3>Морський бій.</h3>
+        <p>
+            Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. 
+            Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+        </p> 
+    <script>
+        // поле розміром 6*6 
+        function getPlayngField (row, column, howManiShips){
+            let arrPlayngField = []
+            for (let i = 0; i < row; i++) {
+                arrPlayngField[i] = []
+                for (let j = 0; j < column; j++) {
+                    arrPlayngField[i][j] = 0   
+                }  
+            }
+            for(let i = 1; i <= howManiShips; i++){
+                let rowRandShips = 1+ Math.floor(Math.random()*howManiShips) 
+                let columnRandShips = 1+ Math.floor(Math.random()*howManiShips) 
+                if (arrPlayngField[rowRandShips][columnRandShips]!==1)
+                    arrPlayngField[rowRandShips][columnRandShips] = 1
+                }
+            return arrPlayngField
+        }
+         //шукаємо корабель
+         function getUserShot (howManiShips,userShot, playingField){
+            let gameResult 
+        while( howManiShips > 0 && userShot > 0){
+            let userShotRow = parseInt(prompt(`Давайте знайдемо корабель. Рядок`))-1
+            let userShotColumn = parseInt(prompt(`Давайте знайдемо корабель. Стовпець`))-1
+            userShot--
+            if (playingField[userShotRow][userShotColumn]=== 1){
+                gameResult = `Ви піймали корабель`
+                playingField[userShotRow][userShotColumn]=0//вбираємо корабель з поля
+                    howManiShips--
+                    if (howManiShips===0){
+                    gameResult = 'Ви піймали всі кораблі'}
+            }
+            else {
+                    gameResult = 'Ви програли!'
+                }
+        }
+            return gameResult
+        }
+        let playingFieldArray = getPlayngField(6, 6, 5) 
+        console.log(playingFieldArray)
+        let play = getUserShot (5, 10, playingFieldArray)
+        alert(play)
+       
+
+    </script>
+</body>
+</html>
