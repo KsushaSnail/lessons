@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 4.</title>
+</head>
+<body>
+    <h2> Задача 4.</h2>
+<p>
+    Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком .
+    Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран (стрілки не потрібні).
+</p>
+<script>
+        let array = [3, 5, 1, 4, 2]
+        document.write(`Головний масив: <br> [${array}]<br><hr>`)
+        //Cортування бульбашкою
+        document.write(`Cортування бульбашкою:  <br>`)
+       let arrBabbleSort = [...array]
+            let c;
+            do {
+            c = false
+            for (let i = 1; i < arrBabbleSort.length; i++){
+                if(arrBabbleSort[i -1] > arrBabbleSort[i]){
+                    let b = arrBabbleSort[i-1]
+                    arrBabbleSort[i-1]=arrBabbleSort[i]
+                    arrBabbleSort[i]=b
+                    c = true
+                   document.write(`[${arrBabbleSort}]<br>`)///поточний стан масиву
+                } 
+            }
+            // document.write(`[${arrBabbleSort}]<br>`)//Прохід по списку
+            }while(c)
+        // // Cортування змішуванням
+        document.write(`<hr> Cортування змішуванням:  <br>`)
+        function getShakerSort(array, swar){
+            let shakerSort = [...array]
+            let startIndex = 0
+            let endIndex = shakerSort.length-1
+            while(startIndex<endIndex){
+                for (let idx = startIndex; idx < endIndex; idx++) {
+                    if (shakerSort[idx] > shakerSort[idx+1]){
+                        swap(shakerSort, idx, idx+1)
+                       document.write(`[${shakerSort}]<br>`)
+                    }  
+                }
+                endIndex--
+                for (let idx = endIndex; idx > startIndex; idx--) {
+                    if (shakerSort[idx]<shakerSort[idx-1]){
+                        swap(shakerSort, idx, idx-1) 
+                       document.write(`[${shakerSort}]<br>`)
+                    }  
+                }
+                startIndex++
+               // document.write(`[${shakerSort}]<br>`)//Прохід по списку
+            }
+            return shakerSort
+        }   
+            const swap = (arr, i, j) => {
+                const akum = arr[i]
+                arr[i] = arr[j]
+                arr[j] = akum
+            }
+        let arrShakerSort = getShakerSort(array, swap)
+       
+        // // Cортування включеннями
+        document.write(`<hr> Cортування включеннями:  <br>`)
+        function getSortbyException (array){
+            let arrSortbyException = [...array]
+            for (let ind = 0; ind < arrSortbyException.length; ind++) {
+                
+                const currentElement = arrSortbyException[ind];//елемент що перевіряється
+                let i = ind-1
+                while (i >= 0 && arrSortbyException[i] > currentElement){
+                    arrSortbyException[i+1] = arrSortbyException[i]
+                    i = i-1
+                    //document.write(`[${arrSortbyException}]<br>`)
+                }
+                arrSortbyException[i+1] = currentElement
+                document.write(`[${arrSortbyException}]<br>`)
+            }
+          return arrSortbyException
+        }
+        let sortbyException = getSortbyException(array)
+        
+</script>
+</body>
+</html>

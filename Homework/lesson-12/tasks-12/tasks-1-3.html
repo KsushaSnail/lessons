@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 1.</title>
+</head>
+<body>
+    <!-- <h2> Задача 1.</h2>
+    <p>
+        Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування бульбашкою
+    </p>
+    <h2>Задача 2. </h2>
+    <p>
+        Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування змішуванням.
+    </p>
+    <h3> Задача 3.</h3>
+    <p>
+        Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування включеннями.
+    </p> -->
+    <script>
+          //згенерувати масив 30 випадкових цілих чисел
+          function getRandomNumers (min, max){
+            let arrRandom = []
+            for (let elem = 1; elem <=30; elem++){
+            let randNum =  min + Math.floor(Math.random()*max) 
+            arrRandom.push(randNum)
+        }
+        return arrRandom
+        }
+        let randomArray = getRandomNumers(1, 100)
+        console.log(randomArray)
+        document.write (`<hr> Згенерований масив 30 випадкових цілих чисел - ${randomArray}`)
+        // Задача 1
+            let arrBabbleSort = [...randomArray]
+            let c;
+            let simile = 0//порівнянь
+            let howManyExchange = 0// обмінів 
+            do {
+            c = false
+            for (let i = 1; i < arrBabbleSort.length; i++){
+                simile++
+                if(arrBabbleSort[i -1] > arrBabbleSort[i]){
+                    let b = arrBabbleSort[i-1]
+                    arrBabbleSort[i-1]=arrBabbleSort[i]
+                    arrBabbleSort[i]=b
+                    c = true
+                     howManyExchange++
+                }
+            }
+            }while(c)
+            console.log(arrBabbleSort)
+            document.write (`<hr>Cортування бульбашкою - ${arrBabbleSort}; <br>Кількість порівнянь ---- ${simile}; 
+                                <br>Кількість обмінів --- ${howManyExchange}`)
+        // Задача 2.
+        function getShakerSort(randomArray, swar){
+            let shakerSort = [...randomArray]
+            let startIndex = 0
+            let endIndex = shakerSort.length-1
+            while(startIndex<endIndex){
+                for (let idx = startIndex; idx < endIndex; idx++) {
+                    simile2++
+                    if (shakerSort[idx] > shakerSort[idx+1]){
+                        howManyExchange2++
+                        swap(shakerSort, idx, idx+1)
+                        
+                    }  
+                }
+                endIndex--
+                for (let idx = endIndex; idx > startIndex; idx--) {
+                    simile2++
+                    if (shakerSort[idx]<shakerSort[idx-1]){
+                        howManyExchange2++
+                        swap(shakerSort, idx, idx-1) 
+                    }  
+                }
+                startIndex++
+            }
+            return shakerSort
+        }   
+            const swap = (arr, i, j) => {
+                const akum = arr[i]
+                arr[i] = arr[j]
+                arr[j] = akum
+            }
+            let simile2 = 0//порівнянь
+            let howManyExchange2 = 0// обмінів 
+        let arrShakerSort = getShakerSort(randomArray, swap)
+        console.log (arrShakerSort)
+        document.write (`<hr>Cортування змішуванням - ${arrShakerSort}; <br>Кількість порівнянь ---- ${simile2}; 
+                                <br>Кількість обмінів --- ${howManyExchange2}`)
+        // Задача 3.
+        function getSortbyException (randomArray){
+            let arrSortbyException = [...randomArray]
+            for (let ind = 0; ind < arrSortbyException.length; ind++) {
+                simile3++
+                const currentElement = arrSortbyException[ind];//елемент що перевіряється
+                let i = ind-1
+                while (i >= 0 && arrSortbyException[i] > currentElement){
+                    
+                    arrSortbyException[i+1] = arrSortbyException[i]
+                    howManyExchange3++
+                    i = i-1
+                    
+                }
+                arrSortbyException[i+1] = currentElement
+                
+            }
+          return arrSortbyException
+        }
+            let simile3 = 0//порівнянь
+            let howManyExchange3 = 0// обмінів 
+        let sortbyException = getSortbyException(randomArray)
+        document.write (`<hr>Cортування включеннями - ${sortbyException}; <br>Кількість порівнянь ---- ${simile3}; 
+                                <br>Кількість обмінів --- ${howManyExchange3}`)
+
+    </script>
+</body>
+</html>

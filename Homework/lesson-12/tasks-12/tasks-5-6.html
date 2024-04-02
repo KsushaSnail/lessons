@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5-6.</title>
+</head>
+<body>
+    <h2> Задача 5-6.</h2>
+<p>
+    Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+</p>
+<p>   
+    Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.  
+</p>
+<script>
+    //Задача 5
+function binarySearchName(arrNameNew, searchName){
+    let start = 0
+    let end = arrNameNew.length-1
+    while(start<end){
+        const MIDDLE = Math.floor((start+end)/2)
+        if(arrNameNew[MIDDLE]===searchName) return MIDDLE
+        if(arrNameNew[MIDDLE]<searchName) start = MIDDLE+1
+        if(arrNameNew[MIDDLE]>searchName) end = MIDDLE-1
+    }
+    return -1
+}
+//Задача 6
+function binaryNameLengthSearch(arrNameNew, nameLength){
+    let start = 0
+    let end = arrNameNew.length-1
+    while(start<end){
+        const MIDDLE = Math.floor((start+end)/2)
+        if(arrNameNew[MIDDLE].length === nameLength) return MIDDLE
+        if(arrNameNew[MIDDLE].length<nameLength) start = MIDDLE+1
+        if(arrNameNew[MIDDLE].length>nameLength) end = MIDDLE-1
+    }
+    return -1
+}
+
+///сортування масиву
+let arrName = ['Ivan', 'Polina', 'Andrii', 'Olga', 'Vita', 'Maxim', 'Anna', 'Oleg']
+document.write(`<hr> Дано масив імен --- [${arrName}] <br><hr>`)
+let arrNameNew = arrName.sort((name1, name2)=>{
+    if (name1>name2) return 1
+    if(name1<name2) return-1
+    else 0
+})
+document.write(`Упорядковано масив --- [${arrNameNew}]<br><hr>`)
+
+//task5
+let name = 'Olga'
+let searchName = binarySearchName( arrNameNew, name)
+document.write(`У масиві ім’я «Olga» знаходиться під індексом ${searchName}<br><hr>`)
+
+//task6
+let nameLength = 5
+let nameLengthSearch = binaryNameLengthSearch( arrNameNew, nameLength)
+document.write(`У масиві ім’я довжиною 5 символів під індексом --- ${nameLengthSearch}<hr>`)
+</script>
+</body>
+</html>
