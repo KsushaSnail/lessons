@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Задача 1.</h2> 
+    <script>
+         let siteObject = [
+            //1 сайт
+        {
+            companyName:'Dt.Telekom',
+            owner: 'Ursula Rot',
+            sponsors:[
+                {
+                    secondName:'Kalelova',
+                    firstName: 'Mari',
+                    investmentSum: 32000
+                },
+                {
+                    secondName:'Korsun',
+                    firstName: 'Vlad',
+                    investmentSum: 24000
+                },
+                {
+                    secondName: 'Mali',
+                    firstName: 'Abdul',
+                    investmentSum: 25000
+                },
+                {
+                    secondName: 'Sone',
+                    firstName: 'Anna',
+                    investmentSum: 30000
+                }
+            ],
+            year: 1999, 
+            costOfTheSite: 18000,
+        },
+        //2 сайт
+        {
+            companyName: 'Lufthansa',
+            owner: 'Timo Sus',
+            sponsors:[
+                {
+                    secondName: 'Mali',
+                    firstName: 'Abdul',
+                    investmentSum: 8000
+                },
+                {
+                    secondName:'Sultani',
+                    firstName: 'Alex',
+                    investmentSum: 25000
+                }
+            ],
+            year: 2007, 
+            costOfTheSite: 21000,
+        },
+        //3 сайт
+        {
+            companyName: 'Puma',
+            owner: 'Robert Koln',
+            sponsors:[
+                {
+                    secondName:'Korsun',
+                    firstName: 'Vlad',
+                    investmentSum: 4000
+                },
+                {
+                    secondName:'Sultani',
+                    firstName: 'Alex',
+                    investmentSum: 15000
+                },
+                {
+                    secondName:'Kalelova',
+                    firstName: 'Mari',
+                    investmentSum: 10000
+                }
+            ],
+            year: 2001, 
+            costOfTheSite: 7500,
+        },
+        //4 сайт
+        {
+            companyName: 'RWE',
+            owner: 'Sandra Blau',
+            sponsors:[
+                {
+                    secondName: 'Kozub',
+                    firstName: 'Ivan',
+                    investmentSum: 2000
+                },
+                {
+                    secondName:'Sultani',
+                    firstName: 'Alex',
+                    investmentSum: 5000
+                },
+                {
+                    secondName:'Kalelova',
+                    firstName: 'Mari',
+                    investmentSum: 10000
+                },
+                {
+                    secondName: 'Mali',
+                    firstName: 'Abdul',
+                    investmentSum: 17000
+                }
+            ],
+            year: 2010, 
+            costOfTheSite: 19000
+        },
+   ]
+   console.log(siteObject)
+
+   //1) загальну вартість усіх сайтів
+   let resCostOfTheSite = siteObject.reduce((prevSum, costSite)=>prevSum+costSite.costOfTheSite, 0)
+   document.write(`Загальна вартість усіх сайтів - ${resCostOfTheSite} <br><hr>`)
+
+   //2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+   let numSites = 0
+   for (const site of siteObject) {
+    if (site.year>2000 && site.year<2009)
+        numSites = numSites + 1
+   }
+   document.write(`Кількість сайтів, що було зроблено між 2000 та 2009 рр. - ${numSites}<br><hr>`)
+
+   // 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+   let howManySite = 0
+   for (const site of siteObject) {
+    let investmentSum  = site.sponsors.reduce((prevSum, invest)=>{ return prevSum + invest.investmentSum }, 0)
+        if (investmentSum > 100000)
+            howManySite++
+   }
+   document.write(`Kількість сайтів, де сума спонсорських вкладень була більшою за 100000 - ${howManySite}<br><hr>`)
+
+   //4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+   document.write(` Загальний список усіх спонсорів : `)
+   let  nameArr = []
+   for (const site of siteObject) {
+     let  nameSponsors = site.sponsors.reduce((prevSponsor, sponsor)=> {return [...prevSponsor, ` <br>${sponsor.firstName}  ${sponsor.secondName}`]}, [])
+    nameArr.push(nameSponsors)
+        }
+  document.write(`${nameArr}<br><hr>`)
+
+  //5) знайти рік, коли прибуток був найбільшим
+let max= 0
+let  maxYear = 0
+  for (const site  of siteObject) {
+        if (site.costOfTheSite > max){
+            max = site.costOfTheSite}
+        if (site.costOfTheSite === max)
+            maxYear = site.year
+  }
+  document.write(`Pік, коли прибуток був найбільшим - ${maxYear}<br><hr>`)
+   
+ // 6) упорядкувати список за спаданням прибутку
+ let newObj =  JSON.parse(JSON.stringify(siteObject)).sort((site1, site2)=>site2.costOfTheSite - site1.costOfTheSite)
+    console.log(newObj)
+    document.write(`Упорядкувати список за спаданням прибутку --- розв'язання => console.log<br><hr>`)
+
+//7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000 -->
+let arr1 = []
+let arr2 = []
+for (const site of siteObject) {
+    if(site.costOfTheSite> 10000){
+     arr1.push( JSON.parse(JSON.stringify(site)))}
+     else {arr2.push( JSON.parse(JSON.stringify(site)))}
+}
+console.log(`більше 10000 =>`)
+console.log(arr1)
+console.log(` до 10000 =>`)
+console.log(arr2)
+document.write(`Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000<br>
+                --- розв'язання => console.log<br><hr>`)
+ </script>
+</body>
+</html>
