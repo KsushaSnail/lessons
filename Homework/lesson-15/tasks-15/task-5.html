@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5.</title>
+</head>
+<body>
+    <h2>Задача 5.</h2>
+</a>   
+  <p>
+      Розробити клас «Керівник танців»
+  </p>      
+  <table  border="2px">
+      <tr>
+          <td>Поля</td>
+          <td>Масив імен хлопців<br>
+          Масив імен дівчат</td>
+      <tr>
+          <td>Методи</td>
+          <td>
+              Метод випадкового вибору імені хлопця <br>
+              Метод випадкового вибору імені дівчини<br>
+              Метод виведення пари для танців<br>
+              Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців <br>
+          </td>
+      </tr>
+  </table> 
+    <script>
+        class dancingMaster {
+            constructor(listGuys, listGirls){
+                this.listGuys =  listGuys
+                this.listGirls = listGirls
+            }
+            getRandomGuys(){
+                let randomNameGuys = Math.floor(Math.random()* this.listGuys.length)
+                return listGuys[randomNameGuys]
+            }
+            getRandomGirls(){
+                let randomNameGirls = Math.floor(Math.random()* this.listGirls.length)
+                return listGirls[randomNameGirls]
+            }
+            getRandomPair(){
+                 return alert(`Танцюють ${this.getRandomGirls()} та ${this.getRandomGuys()}`)
+            }
+            getRan(){
+                setInterval(() => {
+                    this.getRandomPair()
+                }, 5000);
+            }
+        }
+        let listGuys = ['Andrii', 'Oleg', 'Ivan', 'Alex']
+        let listGirls = ['Anna', 'Polina', 'Victoria', 'Sveta']
+        let objDancers = new dancingMaster(listGuys, listGirls)
+    objDancers.getRan()
+      </script> 
+</body>
+</html>

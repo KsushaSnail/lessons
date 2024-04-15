@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 4.</title>
+    <style>
+        img {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <img src="./statistics.jpg" alt=""> -->
+    <h2>Задача 4.</h2>   
+  <p>
+      Розробити клас Baner
+  </p>      
+  <table  border="2px">
+      <tr>
+          <td>Поля</td>
+          <td>Масив об’єктів ( графічних зображень та посилань на сайти)<br>
+      <tr>
+          <td>Методи</td>
+          <td>
+              Метод випадкового вибору об’єкта (графічного зображення та посилання) <br>
+              Метод виведення випадкового банера <br> 
+          </td>
+      </tr>
+  </table>   
+  <img src="" width="250">
+  <script>
+    class Baner {
+        constructor(list){
+            this.list =  list
+        }
+        getRandomIndex(){
+            let randomIndex = Math.floor(Math.random()* this.list.length)
+            return list[randomIndex]
+        }
+       getRandomBaner(){
+       return ` <a href="${this.getRandomIndex().linc}" target="_blank"> <img src="${this.getRandomIndex().img}"  width="250"> </a> <br><hr>`
+          
+        }
+    }
+    let list = [
+        {linc:'https://dou.ua/', img:'./programmer.jpg'}, 
+        {linc:'https://symbl.cc/ru/', img:'./emoji.jpg'},
+        {linc:'https://w3techs.com/', img:'./statistics.jpg'}
+    ]
+    let objBaner = new Baner(list)
+  document.write (  objBaner.getRandomBaner())
+  </script>         
+</li>
+</body>
+</html>

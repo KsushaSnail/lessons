@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 3.</title>
+</head>
+<body>
+    <h2>Задача 3.</h2> 
+  <p>
+      Розробити клас MultChecker для перевірки таблиці множення
+  </p>      
+  <table  border="2px">
+      <tr>
+          <td>Поля</td>
+          <td>Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)  <br>
+              Кількість правильних відповідей <br>
+              Кількість неправильних відповідей<br>
+              </td>
+      </tr>
+      <tr>
+          <td>Методи</td>
+          <td>
+              Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване) <br>
+              Перевірка правильності вказаної відповіді   <br>
+              render - виведення інформації про тестування на екран <br>
+          </td>
+      </tr>
+  </table> 
+  <script>
+    class  MultChecker {
+        constructor(number, correctAnswers, wrongAnswers){
+        this.numberCheced = number //Число, яке перевіряємо
+        this.correctAnswers = correctAnswers  //Кількість правильних відповідей
+        this.wrongAnswers = wrongAnswers   //Кількість неправильних відповідей
+    }
+    exampleGeneration(){ ///Генерування прикладу
+        return 1+Math.floor(Math.random()*10)
+    }
+    checkingTheSpecifiedAnswer(){ //Перевірка правильності вказаної відповіді
+        let random = this.exampleGeneration()
+        let resMult = this.numberCheced * random
+        let question = parseInt(prompt(`Скільки буде << ${this.numberCheced} * ${random} >>?`))
+        if(resMult===question) this.correctAnswers++
+        else this.wrongAnswers++
+    }
+    toString(){
+        return  `Ви вказали ${this.correctAnswers} правильних відповідей та ${this.wrongAnswers} неправильних відповідей`
+    }
+    } 
+    let checker = new MultChecker(7, 0, 0)
+    let i = 7
+    while(i > 0){
+   checker.checkingTheSpecifiedAnswer()
+    i--
+    }
+    document.write(checker.toString())
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2.</title>
+</head>
+<body>
+    <h2>Задача 2.</h2>  
+  <p>
+      Створити об’єкт «Авто». 
+  </p>      
+  <table  border="2px">
+      <tr>
+          <td>Авто</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Поля(властивості)</td>
+          <td>Марка <br>
+              Розмір бака <br>
+              Кількість наявних літрів <br>
+              Кількість місць<br>
+              Кількість пасажирів<br>
+              </td>
+      </tr>
+      <tr>
+          <td>Методи (дії)</td>
+          <td>
+              Заправка на вказану кількість літрів <br>  <!--refuelTheCar -->
+              Виведення кількості пасажирів <br>  <!--toString -->
+              Додавання пасажирів <br>    <!--sumPassengers -->
+              Висадка пасажирів <br>  <!-- minusPassengers -->
+
+          </td>
+      </tr>
+  </table>  
+  <script>
+    let objAuto = {
+        name: 'Chevrolet Aveo',
+        tankSize: 45,
+        numAvilableLiters: 11,
+        numberSeats: 5,
+        numPassengers: 3,
+        // Заправка на вказану кількість літрів  
+        refuelTheCar: function(liter){
+          let sumLiters = this.numAvilableLiters + liter
+            if (sumLiters>this.tankSize)  throw new Error (`Забагато бензину`)
+            else return `<br><hr>У вас тепер ${sumLiters} літр бензину`
+
+        },
+        // Виведення кількості пасажирів  
+        toString: function(){
+            return `<br><hr>  В автомобілі знаходиться -${this.numPassengers} пасажирa`
+        },
+     //   Додавання пасажирів 
+        sumPassengers: function(passenger){
+          this.numPassengers+=passenger
+            if (this.numPassengers>this.numberSeats) throw new Error ( `Забагато пасажирів`)
+            else return `<br><hr>У вас тепер ${this.numPassengers} пасажирів`
+
+        }, 
+       // Висадка пасажирів   
+        minusPassengers: function(minusPas){
+          let min =  this.numPassengers - minusPas
+              return min
+        }
+    }
+    let liter = parseInt(prompt('Скільки літрів бензину?'))
+    let passenger = parseInt(prompt(`Скільки додати пасажирів?`))
+    document.write( objAuto.refuelTheCar(liter))
+    document.write(objAuto.toString())
+    document.write(objAuto.sumPassengers(passenger))
+    document.write(`<br><hr> В автомобілі залишилось ${objAuto.minusPassengers(2)}`)
+  </script>  
+</body>
+</html>

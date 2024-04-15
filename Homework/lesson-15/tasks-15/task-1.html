@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 1</title>
+</head>
+<body>
+    <h2>Задача 1.</h2>
+  <p>
+      Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+  </p>                   
+  <table table border="2px">
+      <tr>
+          <td>Тир</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>Поля(властивості)</td>
+          <td>Масив, у якому зберігається поле з зайцями</td>
+      </tr>
+      <tr>
+          <td>Методи (дії)</td>
+          <td>
+              Метод пострілу (задається позиція пострілу)<br>
+              Виведення ігрового поля
+          </td>
+      </tr>
+  </table>
+  <script>
+    let shootingRange = {
+        arrplayngField: [[1, 0, 0, 1], [0, 1, 0, 0],[0, 1, 1, 0,], [1, 1, 0, 0]],
+        getShot: function(rowStep, columnStep){
+            if (this.arrplayngField[rowStep][columnStep]===1){
+                alert(`Ви піймали  зайця`)
+              // if(step===0) 
+            }
+            else {alert(`Мимо!`)
+               // if(confirm)
+            }
+        },
+        schowPlayingField: function(){
+            document.write (`<table border="2px">`)
+            for (const row of this.arrplayngField) {
+                document.write ('<tr>')
+                    for (const column of row) {
+                        document.write (`<td> \ ${column} \ </td>`)
+                    }
+                document.write ('</tr>')
+            }
+                     document.write (`</table>`)
+        }
+    }       
+    let step = 7
+    alert(`Привіт! Ви маєте 7 спроб та ігрове поле 4 Х 4`)
+    while (step>0) {
+            let rowStep = parseInt(prompt(`Де заєць? По горизонталі крок`))-1
+            let columnStep = parseInt(prompt(`Де заєць? По вертикалі крок`))-1
+        shootingRange.getShot(rowStep, columnStep)
+        step--
+    }
+    document.write ('<hr><b>Ігрове поле</b>')
+    shootingRange.schowPlayingField()
+  </script>
+</body>
+</html>
