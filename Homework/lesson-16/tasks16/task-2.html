@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2.</title>
+</head>
+<body>
+    <h2>Задача 2.</h2>
+    <p>
+        Створити клас TMoney для роботи з грошовими сумами. 
+        Сума повинна зберігатися у вигляді доларового еквіваленту. 
+        Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, 
+        та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі. 
+    </p>
+    <script>
+        class TMoney{
+            #userMoney
+            #saleRateUSD
+            #buyRateUSD 
+
+        get UserMoney(){
+            return this.#userMoney
+        }
+        set UserMoney(userMoney){
+            if (userMoney<0 || isNaN(userMoney)) throw new Error('Некоректні дані')
+            this.#userMoney = userMoney
+        }
+///продаж
+        get SaleRateUSD(){
+            return this.#saleRateUSD
+        }
+        set SaleRateUSD(saleRateUSD){
+            if (saleRateUSD<0 || isNaN(saleRateUSD)) throw new Error('Некоректні дані')
+            this.#saleRateUSD = saleRateUSD
+        }
+//купля
+        get BuyRateUSD(){
+            return this.#buyRateUSD
+        }
+        set BuyRateUSD(buyRateUSD){
+            if (buyRateUSD<0 || isNaN(buyRateUSD)) throw new Error('Некоректні дані')
+            this.#buyRateUSD = buyRateUSD
+        }
+///----------конструктор
+            constructor(userMoney,  saleRateUSD, buyRateUSD){
+                this.UserMoney = userMoney  
+                this.SaleRateUSD = saleRateUSD
+                this.BuyRateUSD = buyRateUSD
+                
+            }
+ ///-------Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, 
+            withdrawalOfMoney (userMoney){
+                let convenUSD = userMoney/this.BuyRateUSD    
+                if ( this.UserMoney < convenUSD)  throw new Error('Забагато')
+                else this.UserMoney -= convenUSD
+            }
+            addMoney (userMoney){
+                let convenUAH = userMoney/this.SaleRateUSD 
+                if (convenUAH <= 0)  throw new Error('Замало')
+                this.UserMoney += convenUAH
+            }
+    //------     визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі. 
+            newUSDRate(money){
+                let userMoneyUAH = this.UserMoney*this.BuyRateUSD // взнали грн скільки на рахунку
+                this.BuyRateUSD = (userMoneyUAH+money)/this.UserMoney
+            }
+            toString (){
+                return `На вашому рахунку ${this.UserMoney.toFixed(2)}$`
+            }
+    }       
+        let objUserMoney = new TMoney(384, 40.00, 39.46)/// гроші юзера в USD
+        let bay = 
+        document.write(`Курс валют : <br> Купля - ${objUserMoney.BuyRateUSD} USD <br> Продаж - ${objUserMoney.SaleRateUSD} USD <hr>`)
+        document.write(`${objUserMoney} <br>`)
+        document.write(`<hr>Якщо зняти потім з рахунку  - 1000 грн <br>`)    
+        objUserMoney.withdrawalOfMoney(1000)///
+        document.write(objUserMoney)
+        document.write(`<hr>Якщо покласти на рахунок - 1000 грн <br>`)    
+        objUserMoney.addMoney(1000) 
+        document.write(objUserMoney)
+        objUserMoney.newUSDRate(100)
+        document.write(`<hr>Курс долара, при якому сума у гривнях збільшиться на 100 => ${objUserMoney.BuyRateUSD.toFixed(2)} USD`)
+
+    </script>
+</body>
+</html>

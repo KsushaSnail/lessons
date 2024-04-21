@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 1.</title>
+</head>
+<body>
+    <h2>
+        Задача 1.
+    </h2>
+</a>
+<p>
+    Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. 
+    Дата представляється структурою із трьома полями. 
+    Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. 
+    Введення та виведення дати реалізувати за допомогою методу  toString.
+</p>  
+<script>
+    class TDate{
+        #day
+        #month
+        get Day(){
+            return this.#day
+        }
+         set Day(day) {
+				if (day < 0 || isNaN(day)) throw new Error('Некоректне значення')
+				this.#day = day
+			}
+        get Month(){
+            return this.#month
+        }
+        set Month(month) {
+				if (isNaN(month)) throw new Error('Некоректне значення')
+				this.#month = month
+			}
+        constructor(day, month, year){
+            this.Day = day  
+            this.Month = month  
+            this.year = year 
+        }
+        
+            /////////////////////////////////////////////
+        
+                ////хочу добавити X днів до дати ??? ----------------
+            checkingDays (newDay){
+                if (newDay < 1){
+                   this.checkingHowManyDays() - newDay
+                    this.Month--
+                }
+                else {
+                    let daysSum = this.Day + newDay 
+                    if(daysSum > this.checkingHowManyDays() ){ 
+                            this.Day = daysSum % 31
+                                this.Month++
+                            }    
+                    else if(daysSum > this.checkingHowManyDays() ){ 
+                                this.Day = daysSum % 30
+                                this.Month++
+                    }       
+                    else if (daysSum > this.checkingHowManyDays()){
+                                this.Day = daysSum % 29
+                                this.Month++
+                    }
+                    else if (daysSum >this.checkingHowManyDays()){
+                            this.Day = daysSum % 28
+                            this.Month++
+                    }
+                    else this.Day = daysSum
+             }
+            }
+            // //перевірка місяця на дні---------------
+            checkingHowManyDays (){
+                let month31 = [1, 3, 5, 7, 8, 10, 12]
+                let month30 = [4, 6, 9, 11]
+                let days= 0
+                if (this.Month!==2){
+                month31.forEach((m)=>{ 
+                        if(this.Month === m)
+                            days = 31
+                        }
+                    )    
+                    month30.forEach((m)=>{ 
+                        if(this.Month === m)
+                            days = 30
+                        }
+                    )  
+                }
+                else if(this.Month===2){
+                    days = (this.year%100===0 && this.year%400!==0)? 29 : 28;  
+                }
+                    return days
+            }
+        // /// хочу добавити місяці X---------------
+            checkingMonth (newMonth){ 
+                if (newMonth < 1) {  
+                    this.Month =Math.abs( (newMonth  % 12)+this.Month)
+                    this.year--
+                }
+                else  if (newMonth > 1){
+                    let sumMonth =  this.Month + newMonth
+                    if (sumMonth>=12){
+                        this.Month = sumMonth % 12
+                        this.year++
+                    }
+                }
+                 if (this.Month===0){
+                        this.Month = 12
+                        this.year--
+                    }
+            }
+        //     /// хочу добавити роки X---------------
+            getYear (newYear){    
+                this.year = this.year + newYear 
+            return this.year
+            }
+            /// виведення --------------
+            toString(){
+                return  `число -"${this.Day}".   місяць - "${this.Month}".   рік - "${this.year}" `
+            }
+    }
+    let objTDate = new TDate (26, 2, 2012)
+    document.write(`Початкова дата => <br>${objTDate.toString()}<br>`)
+        objTDate.checkingDays(10)
+        objTDate.checkingMonth(-18)
+        objTDate.getYear(10)
+     document.write(`Після реалізації методів збільшення/зменшення дати => <br>${objTDate.toString()}`)
+</script>
+</body>
+</html>

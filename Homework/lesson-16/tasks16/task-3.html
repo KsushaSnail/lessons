@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Задача 3.</title>
+</head>
+<body>
+    <h2>
+        Задача 3.
+    </h2>
+    <table table border="2px">
+        <tr>
+            <td> Об’єкт “Фірма” (використати члени-класи)
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Поля</td>
+            <td>
+                назва фірми; </br>
+                дата заснування (рік, місяць); </br>
+                послуги (назва послуги, вартість, термін виконання); </br>
+                адреси філіалів (країна, місто, вулиця, номер будинку); </br>
+            </td>
+        </tr>
+        <tr>
+            <td>Методи</td>
+            <td>
+                визначення кількості років існування фірми;</br>
+                виведення всіх філіалів фірми у вказаному місті;</br>
+                виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;</br>
+            </td>
+        </tr>
+    </table>
+    <script>
+        //------адреси філіалів (країна, місто, вулиця, номер будинку);
+        class adressesFiliation{
+            #country
+            #city
+         
+            get Country (){
+                return  this.#country 
+            }
+            set Country(country){
+                if( country.length === 0)throw new Error('Неправильно нвведено дані')
+                this.#country = country
+            }
+            get City (){
+                return  this.#city
+            }
+            set City(city){
+                if(city.length === 0)throw new Error('Неправильно нвведено дані')
+                this.#city = city
+            }   
+            ///------------ конструктор
+            constructor({country, city, street,houseNumber}){
+                this.Country = country
+                this.City = city
+                this.street = street
+                this.houseNumber = houseNumber
+            }
+            toString(){
+
+                return` <br>${this.Country} - м.${this.City}  вул.${this.street} - ${this.houseNumber}`
+            }
+        }
+        let adresses =[ 
+            new adressesFiliation ({country: 'Україна',city: 'Харків', street: 'Вернадського', houseNumber: 1}),
+            new adressesFiliation ({country: 'Україна',city: 'Харків', street: 'Людвіга Свободи', houseNumber: 39}),  
+            new adressesFiliation ({country: 'Україна',city: 'Київ', street: 'Мазепи', houseNumber: 14}), 
+            new adressesFiliation ({country: 'Україна',city: 'Львів', street: 'Городоцька',houseNumber: 74})
+        ]
+        //-------- послуги (назва послуги, вартість, термін виконання); 
+        class CompanyServices{
+            //----послуги--------------
+            #servic
+            get Servic(){
+                return this.#servic
+            }
+            set Servic(servic){
+                if( servic.length === 0)throw new Error('Неправильно нвведено дані')
+                this.#servic = servic
+            }
+            //------вартість-----------
+            #cost
+            get Cost(){
+                return this.#cost
+            }
+            set Cost(cost){
+                if(cost<0 || isNaN(cost))throw new Error('Неправильно нвведено дані')
+                this.#cost = cost
+            }
+            //-------------конструктор ---------------
+            constructor({servic, cost, deadline}){
+                this.Servic = servic
+                this.Cost = cost 
+                this.deadline = deadline
+            }
+            toString(){
+                return `<br>${this.Servic} - ${this.Cost} грн - ${this.deadline} дн`
+            }
+
+        
+    }
+        let services = [
+            new CompanyServices({servic: 'Toxoplasma gondii, антитіла IgG', cost: 310, deadline: 1}),
+            new CompanyServices({servic: 'Група крові/резус фактор', cost: 280, deadline: 1}),
+            new CompanyServices({servic: 'ANA. Mi-2, антитіла IgG ', cost: 840, deadline: 3}),
+        ]
+
+//--------------------- назва фірми--------------
+//---------------- дата заснування (рік, місяць) --------------
+class Firm{
+    //----------назва фірми
+    #name
+    get Name(){
+                return this.#name
+            }
+    set Name(name){
+        if(name.length === 0)throw new Error('Неправильно нвведено дані')
+        this.#name = name
+    }
+    //-----дата заснування (рік, місяць)
+    #year
+    get Year(){
+        return this.#year
+            }
+    set Year(year){
+        if(year<0 || isNaN(year))throw new Error('Неправильно нвведено дані')
+        this.#year = year
+    }
+    #month
+    get Month(){
+        return this.#month
+            }
+    set Month(month){
+        if(month<0 || isNaN(month))throw new Error('Неправильно нвведено дані')
+        this.#month = month
+    }
+     //-------------конструктор ---------------
+    constructor( name, year, month, adresses, services){
+        this.Name = name 
+        this.Year = year
+        this.Month = month
+        this.adresses = adresses
+        this.services = services
+    }
+    toString(){
+        return `<hr>Фірма -  <strong>"${this.Name}" </strong>, заснована в ${this.Year} році. <hr>`
+    }
+    // -------------визначення кількості років існування фірми;
+    howOldIsTheCompany (userYear){
+        if(userYear<this.Year)throw new Error('Некоректно введено рік')
+        return userYear - this.Year
+    } 
+    //--------------виведення всіх філіалів фірми у вказаному місті;
+    findABranchInTheCyti(userCyti){
+       return this.adresses.filter((adr)=>adr.City===userCity)
+    }
+    
+    //--------------виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;  
+    getCompanyServices(money, day){
+    return this.services.filter((servic)=>servic.Cost  <= money &&servic.deadline<= day)     
+    } 
+}
+    let objFirm = new Firm ('Synevo', 2007, 3, adresses, services)
+    document.write(objFirm)
+    let userYear = 2024//parseInt(prompt('Напишіть рік'))
+    document.write(`<hr><br>Компанія в Україні iснує вже - ${objFirm.howOldIsTheCompany(userYear)} років<br><hr>`)
+    let userCity = 'Харків'
+   document.write (`Всі філіали фірми у вашому місті: <br> ${objFirm.findABranchInTheCyti(userCity)}<br> <hr>`)
+    let money= 1500
+    let day = 4
+    document.write (`Компанія може надати наступні послуги:  ${objFirm.getCompanyServices(money, day)}`)
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //  document.write(adresses)
+    </script>
+   
+</body>
+</html>
