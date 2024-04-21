@@ -37,7 +37,7 @@
                 0)
                 return resSum
             }
-            //---------знаходження мінімальної сум які може видати банкомат
+            //---------знаходження мінімальної суми які може видати банкомат
             get minBanknote(){
                 let resMin = this.banknoteList.reduce((prevBanknote, note) => (note.numBanknote>0 && note.banknote<prevBanknote?note.banknote: prevBanknote), 
                 Infinity)
@@ -73,7 +73,7 @@
                     document.write('Заберіть гроші!')
                 } 
                 else 
-                document.write ('Не має тпотрібних купюр')
+                document.write ('Не має потрібних купюр')
             }
         }
         let banknoteList =[ 
