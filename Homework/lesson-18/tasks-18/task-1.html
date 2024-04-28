@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Задача 1.
+    </h2>
+<p>
+    Розробити калькулятор
+</p>
+
+<div>
+   
+        <label>First number <input type="text" id="first"></label><br>
+        <label>Second number<input type="text" id="second"></label><br><br>
+        <button id="add">Додати</button>
+        <button id="minus">Відняти</button>
+        <button id="multipiy">Помножити</button>
+        <button id="giveUp">Поділити</button>
+        <hr>
+        <label>Результат <input type="text" id="res" placeholder="result"><br></label>
+       
+
+</div>
+  <script>
+        // -----------додавання
+            function getAdd(){
+                const firstNum = parseFloat(document.getElementById('first').value)
+                const secondNum =parseFloat(document.getElementById('second').value)
+                const addRes = firstNum + secondNum
+                document.getElementById('res').value = addRes
+            }     
+            
+            const btn1 =document.getElementById('add')
+             btn1.onclick = getAdd
+     
+    
+        //---------- віднімання
+            function getSubtraction(){
+                const firstNum = parseFloat(document.getElementById('first').value)
+                const secondNum =parseFloat(document.getElementById('second').value)
+                const subRes = firstNum-secondNum
+                document.getElementById('res').value = subRes
+            }
+            const btn2 =document.getElementById('minus')
+             btn2.onclick = getSubtraction
+    // ---------- множення
+            function getMultipiy(){
+                const firstNum = parseFloat(document.getElementById('first').value)
+                const secondNum =parseFloat(document.getElementById('second').value)
+                const multipiyRes = firstNum*secondNum
+                document.getElementById('res').value = multipiyRes
+            }
+            const btn3 =document.getElementById('multipiy')
+             btn3.onclick = getMultipiy
+    // --------------ділення
+            function getGiveUp(){
+                const firstNum = parseFloat(document.getElementById('first').value)
+                const secondNum =parseFloat(document.getElementById('second').value)
+                const giveUpRes = firstNum/secondNum
+                document.getElementById('res').value = giveUpRes
+            }
+            const btn4 =document.getElementById('giveUp')
+             btn4.onclick = getGiveUp
+           
+        </script>
+</body>
+</html>

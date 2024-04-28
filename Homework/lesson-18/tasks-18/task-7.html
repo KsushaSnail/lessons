@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Задача 7.
+    </h2>
+    <p>
+        Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту 
+        (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати  - radio buttons). 
+        Ціни визначте самі. Підрахувати загальну вартість.
+    </p>
+    <hr>
+    <div>
+        <div>
+            <h3>Вид транспорту:</h3>
+            <select name="transport" id="transport">
+                <option value="1000">Авто</option>
+                <option value="2000">Автобус</option>
+                <option value="4000">Літак</option>
+            </select>
+        </div>
+        <div>
+            <h3>Харчування</h3>
+            <label>
+                Сніданок
+                <input type="checkbox" value="200">
+            </label>
+            <label>
+                Обід
+                <input type="checkbox" value="350">
+            </label>
+            <label>
+                Вечеря
+                <input type="checkbox" value="300">
+            </label>
+        </div>
+        <div>
+            <h3>Ваш гід</h3>
+            <label>
+                Anna Li
+                <input type="radio" value="250" name="guide">
+            </label>
+            <br>
+            <label>
+                Ivan 
+                <input type="radio" value="210" name="guide">
+            </label>
+            <br>
+            <label>
+                Polina Gross
+                <input type="radio" value="270" name="guide">
+            </label>
+        </div>
+        <div >
+            <br>
+            <button>Підрахувати загальну вартість</button>
+            <span id="travel"></span>
+        </div>
+    </div>
+    <script>
+            function getCostTravel(){
+               let transportPrice = parseInt(document.getElementById('transport').value)
+               let listFood = document.querySelectorAll('input[type=checkbox]')
+               let sumFood = 0
+               for (const inpEl of listFood) {
+                    if(inpEl.checked)
+                    sumFood+=parseInt(inpEl.value)
+               }
+               let guideList = document.querySelectorAll('input[type=radio]')
+               let sumGuide = 0
+               for (const inpEl of guideList) {
+                    if(inpEl.checked)
+                    sumGuide+=parseInt(inpEl.value)
+               }
+               let costTravel = transportPrice + sumFood + sumGuide
+               console.log(costTravel)
+               document.getElementById('travel').innerText = `Загальна вартість подорожі: ${costTravel} грн`
+            }
+            let btn = document.getElementsByTagName('button')[0]
+            btn.onclick = getCostTravel
+    </script>
+</body>
+</html>

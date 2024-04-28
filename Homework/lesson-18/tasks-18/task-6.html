@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 6.</title>
+</head>
+<body>
+    <h2>
+        Задача 6.
+    </h2>
+    <p>
+        Користувач задає кількість оцінок і натискає на кнопку «get table». 
+        В результаті формується таблиця з input, куди користувач вводить оцінки. 
+        Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+    </p>
+    <hr>
+    <div id="wrap">
+        <label>Price number
+            <input type="text"  id="num">
+        </label>
+        <br><br>
+        <button id="btnTabl">get table</button>
+    </div>
+    <script>
+        function getTable() {
+            const num = parseInt (document.getElementById('num').value)
+            for (let i = 0; i < num; i++) {
+                let input = document.createElement('input')
+                input.setAttribute('type', 'text')
+                input.setAttribute('class', 'ratig')
+               document.getElementById('wrap').append(input)
+            }
+            let btnSum =  document.createElement('button')
+            btnSum.innerText = 'get sum'
+            document.getElementById('wrap').append(btnSum)
+            btnSum.onclick = getSum
+        }
+        function getSum() {
+            let listNum =document.getElementsByClassName('ratig')
+            let sum = 0
+            let i = 0
+            for (const el of listNum) {
+                sum +=parseInt (el.value)
+                i++
+            }
+            let resSum= sum/i
+            let res = document.createElement('h3')
+            res.innerText = `sum = ${resSum.toFixed(1)}`
+            document.getElementById('wrap').append(res)
+        }
+        let btnTable = document.getElementById('btnTabl')
+        btnTable.onclick = getTable
+        
+    </script>
+</body>
+</html>

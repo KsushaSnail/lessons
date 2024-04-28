@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Задача 4.</title>
+</head>
+<body>
+    <h2>
+        Задача 4.
+    </h2>
+    <p>
+        Наперед задано у скрипті масив зі списком бажань. 
+        Після завантаження сторінки випадковим чином вибираються 
+        3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+    </p>
+    <hr>
+    <div id="wrap">
+    </div>
+    
+    <script>
+      function givWish(wishList) {
+            for (let i = 0; i < 3; i++) {
+            let w = Math.floor(Math.random()* wishList.length)
+            let wish = wishList[w]  
+            let divEl = document.createElement('div')
+            divEl.innerText = `${wish}`
+            document.getElementById('wrap').append(divEl)
+            }    
+        }
+       const wishList = ['Schönen Tag!',  'Гарного настрою!', 'Моречко тебе чекає ;)!', 'Gesundheit!', 'Нехай мрії здійснюються', 'Ich wünsche dir alles Gute!',]
+        window.onload = givWish(wishList)
+    </script> 
+</body>
+</html>

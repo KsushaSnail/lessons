@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2.</title>
+</head>
+<body>
+    <h2>
+        Задача 2.
+    </h2>
+    <p>
+        Зробити конвертер валют (курси валют – константи у скрипті)
+
+    </p>
+    <div>
+        <label>Сума в гривнях 
+            <input type="text"  id="grn">
+        </label>
+        <button id="conver">Конвертувати</button>
+        <hr>
+        <label>Сума в євро
+            <input type="text"  id="eur">
+        </label>
+        <label>Сума в доларах 
+            <input type="text"  id="usd">
+        </label>
+    </div>
+    <script>
+        function getConver(){
+            const amountOfMoney = parseFloat(document.getElementById('grn').value)
+            let resUSD = amountOfMoney / USD
+            let resEUR = amountOfMoney / EUR
+            document.getElementById('eur').value = resEUR.toFixed(2)
+            document.getElementById('usd').value = resUSD.toFixed(2)
+        }
+        const USD = 39.84
+        const EUR = 42.91
+        const btn = document.getElementById('conver')
+        btn.onclick = getConver
+    </script>
+</body>
+</html>

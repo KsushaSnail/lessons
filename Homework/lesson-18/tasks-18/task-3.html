@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        Задача 3.
+    </h2>
+    <p>
+        Користувач задає рік народження. Визначити кількість років користувача.
+    </p>
+    <div id="wrap">
+        <div>
+             <label>
+            Рік народження
+            <input type="text">
+        </label>
+        <button id="clBtn">Ваш вік</button>
+        <hr>
+        </div>
+       
+    </div>
+    
+    <script>
+
+        function getHowOldUser(){  
+            const yearOfBirth = parseInt(document.getElementsByTagName('input')[0].value)
+            const usersAge = year-yearOfBirth
+            const elH2 = document.createElement('h2')
+            elH2.innerText = `Вам - ${usersAge} років`
+          document.getElementById('wrap').append(elH2)
+        } 
+        const year = 2024
+        const btn = document.getElementById('clBtn')
+        btn.onclick = getHowOldUser
+       
+    </script>
+</body>
+</html>
