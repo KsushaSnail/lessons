@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Задача 6.</title>
+    <style>
+       .wrap{
+        display: flex;
+        justify-content: space-around;
+        width: 70%;
+        padding: 5px;
+        border: 1px solid #40494d5e;
+        color: #40494de3;
+       }
+      /* Player list div-containers  */
+         .list_players, .selected_players{
+            border: 2px solid #0b1d26c2;
+            width: 204px;
+            padding: 1px;
+        }
+        /* one player container */
+        .cont{
+            display: flex;
+            justify-content: space-around;
+            width: 200px;
+            background-color: #6fbf1257;
+            border: 2px solid #0b1d2687;
+            margin-bottom: 2px;
+        }
+
+       h3{
+        font-size: 14px;
+        margin: 2px;
+        text-align: center;
+       }
+        /* стрілка на кнопці */
+        .arrow_red::before{
+            content: '\1F844';
+                color: #d20c0c;
+        }
+        .arrow_green::before{
+            content: '\1F846';
+            color: #26b72c;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        Задача 6.
+    </h2>
+    <p>
+        Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. 
+        При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. 
+        При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону 
+        стрілку спортсмен переміщається у загальний список.
+    </p>
+    <div class="wrap">
+        <div class="list_players"><h3>Загальний список</h3></div>
+        <div class="selected_players"><h3>Обрані для змагання</h3></div>
+</div>
+    <script>
+        class Sportsman{
+            constructor(namePlayer, containerPlayer){
+                this.namePlayer=namePlayer
+                this.elPlayer = this.render(containerPlayer)
+            }
+                getPlayer(){
+                    const getPlayer = this.elPlayer
+                    console.log(getPlayer);
+                    const getBtn = event.currentTarget
+                    console.log(getBtn);
+                    getBtn.classList.remove ('arrow_red')
+                    getBtn.classList.add ('arrow_green')
+                    getBtn.addEventListener("click",this.addPlayer.bind(this))//----
+                    const player = document.querySelector('.list_players').append(getPlayer)
+                }
+                addPlayer(){
+                    const selectPlayer = this.elPlayer
+                    console.log(selectPlayer);
+                    const selectBtn = event.currentTarget
+                    console.log(selectBtn);
+                    selectBtn.classList.remove ('arrow_green')
+                    selectBtn.classList.add ('arrow_red')
+                    selectBtn.addEventListener("click",this.getPlayer.bind(this))//----
+                const player = document.querySelector('.selected_players').append(selectPlayer)
+                }
+                render(containerPlayer){
+                    const container = document.createElement('div')
+                    container.className = 'cont'
+                    const sporsmenName =  document.createElement('div')
+                    sporsmenName.innerText=this.namePlayer
+                    sporsmenName.className= 'div-q'/// ------------додатковий клас .div1
+                    container.append(sporsmenName)
+                    const divArrov = document.createElement('div')
+                    divArrov.className='div-q'///// -----------------додатковий клас .div2
+                    const btnArrov = document.createElement('button')
+                    btnArrov.className='arrow_green'
+                    btnArrov.addEventListener("click",this.addPlayer.bind(this))//---
+                    divArrov.append(btnArrov)
+                    container.append(divArrov)
+                    document.getElementsByClassName(containerPlayer)[0].append(container)
+                    return container
+                }  
+            
+        }
+        onload = function(){
+             let name = new Sportsman('John Depp', 'list_players')
+             let name2 = new Sportsman('Sara Wik', 'list_players')
+             let name3 = new Sportsman('Den Miro', 'list_players')
+             let name4 = new Sportsman('Alan Woo', 'list_players')
+        } 
+    </script>
+</body>
+</html>

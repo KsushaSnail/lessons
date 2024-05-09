@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2.</title>
+    <style>
+        div{
+            width: 300px;
+        }
+        input{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>
+        Задача 2.
+    </h2>
+    <p>
+        Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші 
+        (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний),
+        усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+    </p>
+    <hr>
+    <div>
+        <label>1 
+            <input type="number"></label>
+        <label><input type="number"></label>
+        <label><input type="number"></label>
+        <label><input type="number"></label>
+        <label><input type="number"></label>
+    </div>
+    <script>
+        document.addEventListener('input', function (event) {
+            let elInput = event.target.parentElement
+            while (elInput.nextElementSibling!==null) { 
+                elInput.nextElementSibling.firstElementChild.value = parseInt(elInput.firstElementChild.value) + 1
+				elInput = elInput.nextElementSibling
+            }
+            while (elInput.previousElementSibling!==null) { 
+                elInput.previousElementSibling.firstElementChild.value = parseInt(elInput.firstElementChild.value) - 1
+				elInput = elInput.previousElementSibling
+            }
+        })
+       
+
+    </script>
+</body>
+</html>
