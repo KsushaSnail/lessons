@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5.</title>
+</head>
+<style>
+    .wrap{
+        display: flex; 
+        background-color: #faebd78a; 
+    }
+    img{
+        width: 70%;
+        height: 90%;
+        margin: 10px;
+    }
+    .card{
+        border:2px solid #29c130;
+    }
+</style>
+<body>
+    <h2>
+        Задача 5.
+    </h2>
+    <p>
+        Відображаємо картки товарів, які користувач може вибирати. 
+        Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+    </p>
+    <hr>
+    <div class="wrap">
+        <div><img src="./img-19/card-1.png" alt="" ></div>
+        <div> <img src="./img-19/card-2.png" alt=""></div>
+        <div> <img src="./img-19/card-3.png" alt=""></div>
+        <div><img src="./img-19/card-4.png" alt=""></div>
+    </div>
+    <script>
+        function imgOnclick(event) {
+            const imgEl = event.target
+            if(imgEl.tagName==='IMG')
+            imgEl.classList.toggle('card')
+        }
+        onload = function(){
+            document.querySelector('div').onclick = imgOnclick//------- делегування подій
+        }
+     </script>
+    <hr>
+</body>
+</html>

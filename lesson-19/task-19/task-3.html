@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 3.</title>
+    <style>
+        .conteiner{
+            display: flex;
+            justify-content: center;
+            width: 500px;
+            background-color: #cddc3938;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        Задача 3.
+    </h2>
+    <p>
+        Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами 
+        (кількість елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). 
+        При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+    </p>
+    <hr>
+    <div>
+         <div id="wrap" class="conteiner"></div>
+         <button>push</button>
+    </div>
+   
+    <script>
+        function getRandom(min, max) {
+            return min+Math.floor(Math.random()*(max-min+1))
+        }
+        function getNumberOl(pointOl = 5) {
+            for(let i =0; i<pointOl; i++){
+                let olEl= document.createElement('ol')
+                for (let i = 0; i < getRandom(1, 10); i++) {
+                        let liEl = document.createElement('li')
+                        liEl.innerText = getRandom(1, 100)
+                        olEl.append(liEl)
+                }
+                let divConteinerOl = document.createElement('div')
+                divConteinerOl.append(olEl)
+                document.getElementById('wrap').append(divConteinerOl)
+            } 
+        
+        }
+        onload = getNumberOl()
+        let btn = document.querySelector('button')
+        btn.onclick = function() {
+            let allList = document.querySelectorAll('ol')
+            for (const olEl of allList) {
+                let count = 0
+                for (const liEl of olEl.children) {
+                    count++
+                }
+                if (count%2===0)
+                olEl.style.color = 'green'
+                else olEl.style.color ='#e91e63a8'
+            }
+        }
+    </script>
+</body>
+</html>
