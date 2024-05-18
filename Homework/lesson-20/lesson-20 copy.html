@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача </title>
+    <style>
+        .wrap-container{
+            display: flex;
+        }
+        .img-container{
+            width: 100px;
+            height: 150px;
+            margin: 5px;
+            border:2px solid #29c130;
+            background-color: #8d3adbba;
+            /* backface-visibility: hidden;
+            transition: transform 0.5s; */
+        }
+        .img-parameters{
+            width: 100px;
+            height: 150px;
+        }
+        .img-close{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <a href="" target="_blank">
+                <h2>
+                    Задача 1.
+                </h2>
+            </a>
+            <p>
+                Задача. Гра «Знайти пару».  Дано список зображень. Кожне із зображень двічі використовується як фон для картки, 
+                але воно приховане. При кліку на 2 картки їх зображення відриваються. Якщо зображення однакові, то залишаємо їх відкритими. 
+                Інакше через 1 секунду знову приховуємо. 
+            </p>
+        </li>
+    </ul>
+    <hr>
+    <div id="wrap">
+    </div>
+    <img src="" alt="">
+    <script>
+        class PlayingCard{
+            constructor(imgCards){
+                this.imgCards = imgCards
+                this.el = this.render()
+
+            }
+            sendEvent(openImg) {
+                const event = new CustomEvent(openImg, {
+                    detail: {imgSrcList: this.imgSrcList  },    
+                    bubbles: true,
+                })
+                this.el.dispatchEvent(event)
+            }
+            
+            //---------------вставили картинку та її закрили
+            createImg(){
+                const imgEl = document.createElement('img')
+              //  imgEl.className = 'img-parameters'
+                let randomIndex= Math.floor(Math.random()*this.imgCards.length)
+                imgEl.setAttribute('src', this.imgCards[randomIndex])
+                imgEl.className = 'img-close'
+
+                this.imgEl = imgEl
+                return  this.imgEl
+            }
+            render(){
+                // ----------------- одна картинка
+                    const divImgContainer = document.createElement('div')
+                    divImgContainer.className = 'img-container'
+                    divImgContainer.append(this.createImg())
+                    divImgContainer.onclick=()=>this.sendEvent('openImg') 
+                    this.divImgContainer= divImgContainer
+
+                return divImgContainer
+            }
+        }
+        class GameManager{
+            constructor(imgSrcList,parentContainerSelector){
+                this.imgSrcList = imgSrcList//--- картинки
+                this.openImgArr = []
+                this.el = this.render(parentContainerSelector)
+            }
+            //----------------зберігаємо шлях до картинки на яку був "click"  та перевіряємо src
+            updateImg(){
+                this.openImgArr.push (this.imgEl)
+                console.log(this.openImgArr)
+                if(this.openImgArr.length===2){
+                        this.srcImgFirst = this.openImgArr[0].getAttribute('src')
+                        console.log(this.srcImgFirst)
+                        this.srcImgSecond = this.openImgArr[1].getAttribute('src')
+                        console.log(this.srcImgSecond)
+                    if(this.srcImgFirst ===  this.srcImgSecond){
+                        this.openImgArr = []
+                    }
+                   else {
+                        setTimeout(() => {
+                            this.openImgArr[0].classList.remove('img-parameters');
+                            this.openImgArr[0].classList.add ('img-close')
+                            this.openImgArr[1].classList.remove('img-parameters');
+                            this.openImgArr[1].classList.add ('img-close')
+                        }, 1000);
+                    }
+                }
+            }
+            //------------------відкриваємо картинки
+            onOpenImg(){
+                const imgDiv = event.target
+                this.imgDiv = imgDiv
+                const imgEl = this.imgDiv.children[0]
+                this.imgEl = imgEl
+                if(this.imgDiv.tagName==='DIV'){ 
+                    this.imgEl.classList.remove ('img-close')
+                    this.imgEl.classList.add ('img-parameters') 
+                    this.updateImg()
+                 
+                }
+            }
+            render(parentContainerSelector){
+                let containerImage = document.createElement('div')
+                containerImage.className = 'wrap-container'
+                for (let i = 0; i < 6; i++) {
+                    const imgEl = new PlayingCard(imgSrcList)
+                    containerImage.append(imgEl.el)   
+                }
+///-----------------слухаємо контейнер containerImage
+                containerImage.addEventListener(
+                            'openImg',
+                            this.onOpenImg.bind(this)
+                        )
+                document.getElementById('wrap').append(containerImage)
+                return containerImage
+            }
+        }
+       const imgSrcList = ['./img/ballons.jpg', './img/ice.jpg', './img/snail.jpg']
+        window.onload = function () {
+            const field2 = new GameManager (imgSrcList, '#wrap')
+        }   
+      
+      
+      
+      
+      
+      
+      
+      
+    </script>
+</body>
+</html>
