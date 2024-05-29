@@ -81,11 +81,13 @@
                     }
                 return false
             }
-             if(valueRating<50 && valueMomth===5){
-                        answerSpan.innerText = 'Ви не вспієте виправити оцінку до канікул' 
-                     }
-                     else {
-                        answerSpan.innerText = 'Ви маєте час на виправлення оцінки'}
+              if (valueRating>60 && valueMomth===5){
+                answerSpan.innerText = 'Все Good! У вас гарна оцінка' }
+            else if(valueRating<60 && valueMomth===5){
+                answerSpan.innerText = 'Ви не вспієте виправити оцінку до канікул' 
+                }
+            else {
+                answerSpan.innerText = 'Ви маєте час на виправлення оцінки'}
        })
         
     </script>
