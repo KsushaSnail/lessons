@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 1.</title>
+    <style>
+        .wrap{
+            display: flex;
+            font-size: 12px;
+        }
+        .wrap, div{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        Задача 1.
+    </h2>
+    <div class="wrap">
+    <div>
+            <p>
+                Створити клас Client
+            </p>
+            <table table border="2px">
+                <tr>
+                    <td>Властивості</td>
+                    <td>
+                        ID</br>
+                        ПІБ</br>
+                        Кількість грошей на рахунку
+                    </td>
+                </tr>
+                <tr>
+                    <td>Методи</td>
+                    <td>
+                        Додавання грошей</br>
+                        Зняття грошей</br>
+                        ToString
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <p>На основі цього класу створити клас GoldenClient</p>
+            <table table border="2px">
+                <tr>
+                    <td>Властивості</td>
+                    <td>
+                        ID</br>
+                        ПІБ</br>
+                        Кількість грошей на рахунку</br>
+                        Ліміт кредитних коштів</br>
+                        Відсоток за використання кредитних коштів
+                    </td>
+                </tr>
+                <tr>
+                    <td>Методи</td>
+                    <td>
+                        Додавання грошей</br>
+                        Зняття грошей</br>
+                        Визначення пені за використання кредитних коштів</br>
+                        ToString
+                    </td>
+                </tr>
+            </table> 
+        </div> 
+    </div>
+<hr>
+<!-- <div id="data">
+
+</div> -->
+    <script>
+        class Client{
+            constructor(id, name, amountOfMoney){
+                this.id = id
+                this.name = name
+                this.amountOfMoney = amountOfMoney
+            }
+            addMoney(sum){
+                if(sum>0)
+                this.amountOfMoney+=sum
+            }
+            subtractMoney(sum){
+                if(this.amountOfMoney>sum)
+                this.amountOfMoney-=sum
+            }
+            toString(){
+                return `#${this.id}: ${ this.name} - ${this.amountOfMoney} grn`
+            }
+           
+        
+        } 
+        class GoldenClient extends Client{
+            constructor(id, name, amountOfMoney, creditLimit, rateCredit){
+                super(id, name, amountOfMoney)
+                this.creditLimit = creditLimit
+                this.rateCredit = rateCredit
+            }
+            definitionFine(){
+              return (this.creditLimit/100)*this.rateCredit
+            }
+            toString(){
+                return `${super.toString()} - кредитний ліміт:${this.creditLimit} grn, процент:${this.rateCredit} %, пеня: ${this.definitionFine()} grn`
+            }
+        }
+        const dataCient = new Client (300517, 'Polina Blume', 5142)
+        document.write(`${dataCient.toString()} <br>`)
+        dataCient.addMoney(300)
+        document.write(`${dataCient.toString()} <br>`)
+        dataCient.subtractMoney(400)
+        document.write(`${dataCient.toString()} <br>`)
+        //------------------------
+        const updatingClientData = new GoldenClient (300517, 'Polina Blume', 5142, 1000, 15)
+            document.write(`${updatingClientData.toString()} <br>`)
+            updatingClientData.addMoney(300)
+            document.write(`${updatingClientData.toString()} <br>`)
+            updatingClientData.subtractMoney(400)
+            document.write(`${updatingClientData.toString()} <br>`)
+
+        
+    </script>
+</body>
+</html>

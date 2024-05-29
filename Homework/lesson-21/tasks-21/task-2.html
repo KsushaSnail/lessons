@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 2.</title>
+   
+</head>
+<body>
+    <h2>
+        Задача 2.
+    </h2>
+    <p>
+        Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції<br>
+        Вивести всіх простих клієнтів;<br>
+        Вивести всіх клієнтів GoldenClient;<br>
+        Знайти сумарну кількість грошей на рахунку;
+    </p>
+<hr>  
+<div id="wrap"></div>
+    <script>
+        class Client{
+            constructor(id, name, amountOfMoney){
+                this.id = id
+                this.name = name
+                this.amountOfMoney = amountOfMoney
+            }
+            addMoney(sum){
+                if(sum>0)
+                this.amountOfMoney+=sum
+            }
+            subtractMoney(sum){
+                if(this.amountOfMoney>sum)
+                this.amountOfMoney-=sum
+            }
+            toString(){
+                return `#${this.id}: ${ this.name} - ${this.amountOfMoney} grn`
+            }
+           
+        
+        } 
+        class GoldenClient extends Client{
+            constructor(id, name, amountOfMoney, creditLimit, rateCredit){
+                super(id, name, amountOfMoney)
+                this.creditLimit = creditLimit
+                this.rateCredit = rateCredit
+            }
+            definitionFine(){
+              return (this.creditLimit/100)*this.rateCredit
+            }
+            toString(){
+                return `${super.toString()} - кредитний ліміт:${this.creditLimit} grn, процент:${this.rateCredit} %, пеня: ${this.definitionFine()} grn`
+            }
+        } //------------------------
+       
+        class Bank{
+            constructor(listClients){
+                this.listClients = listClients
+                this.render()
+            }
+            //-------Вивести всіх простих клієнтів
+            renderClient(){
+                const container = document.createElement('div')
+                const title = document.createElement('h3')
+                title.innerText = 'Вивести всіх простих клієнтів'
+                container.append(title)
+                for (const client of this.listClients) {
+                    const   clientEl =   document.createElement('div')
+                    if (!client.creditLimit)
+                    clientEl.innerText =  `${client.name} -  money: ${client.amountOfMoney} grn`
+                    container.append(clientEl)
+                }
+                return container
+            }
+            //--------Вивести всіх клієнтів GoldenClient
+            renderGoldClient(){
+                const container = document.createElement('div')
+                const title = document.createElement('h3')
+                title.innerText = 'Вивести всіх клієнтів GoldenClient'
+                container.append(title)
+                for (const client of this.listClients) {
+                    const   clientEl =   document.createElement('div')
+                    if (client instanceof GoldenClient)
+                    clientEl.innerText = `${client.name} - money: ${client.amountOfMoney} grn, creditLimit: ${client.creditLimit} grn`
+                    container.append(clientEl)
+                }
+                return container
+            }
+            ///------------Знайти сумарну кількість грошей на рахунку
+            totalAmountOfMoney(){
+                const container = document.createElement('div')
+                let totalSum = this.listClients.reduce((prevSum,client)=>prevSum + client.amountOfMoney,0)
+                const title = document.createElement('h4')
+                title.innerText =`Cумарнa кількість грошей на рахунку - ${totalSum} grn`
+                container.append(title)
+                return container
+            }
+            render (){
+                const wrap = document.getElementById('wrap')
+                wrap.append(this.renderClient())
+                wrap.append(this.renderGoldClient())
+                wrap.append(this.totalAmountOfMoney())
+            }
+        } 
+        const listClients = [
+            new Client (140885, 'Andrii D', 8840),
+            new GoldenClient (310369, 'Vita O', 15545, 1000, 10),
+            new Client (300517, 'Polina D', 5142),
+            new GoldenClient (200482, 'Oleh T', 12170, 1000, 10),
+            new Client (290175, 'Ivan R', 2142),
+        ]
+        window.onload = function () {
+           const bankClients = new Bank (listClients)
+        }  
+       
+        
+       
+      
+          
+
+        
+    </script>
+</body>
+</html>

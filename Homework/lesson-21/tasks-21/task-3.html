@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Задача 3.</title>
+    <style>
+        #wrap{
+            display: flex;
+        }
+        .img-container{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(58, 169, 58, 0.868);
+            margin: 5px;
+        }
+        img{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Задача 3.</h3>
+    <p>Розробити Класи</p> 
+    <div id="wrap" ></div>
+    <script>
+        class Picture{
+            constructor(coordinateX, coordinateY, imgSrc){
+                this.coordinateX = coordinateX
+                this.coordinateY=coordinateY
+                this.imgSrc = imgSrc
+                
+                this.el = this.render()
+            }
+            createIMG(){
+                const imgEl = document.createElement('img')
+                imgEl.setAttribute('src', this.imgSrc)
+                imgEl.style.left = `${this.coordinateX}px`
+                imgEl.style.top = `${this.coordinateY}px`
+                this.imgEl = imgEl
+                return imgEl
+            }
+            render(){
+                const container = document.createElement('div')
+                container.className = 'img-container'
+                container.append(this.createIMG())
+                document.getElementById('wrap').append(container)
+                return container
+            }
+        }
+
+        class House extends Picture{
+            constructor(coordinateX, coordinateY, imgSrc, interval){
+                super(coordinateX, coordinateY, imgSrc)
+                this.interval = interval
+                this.getInterval()
+            }
+            getInterval(){
+                setInterval(() => {
+                    const random = 0.5 + Math.floor(Math.random() * (2 - 0.5 + 1));
+                    this.imgEl.style.transform = `scale(${random})`;
+                }, this.interval);
+            }
+        }
+        class Dog extends Picture{
+            constructor(coordinateX, coordinateY, imgSrc, interval){
+                super(coordinateX, coordinateY, imgSrc)
+                this.interval = interval
+                this.getInterval()
+            }
+            getInterval(){
+                setInterval(() => {
+                    const step = -180 + Math.floor(Math.random() * (2 * 180 + 1))
+                    const left = parseInt(this.imgEl.style.left)+ step
+                    if (left < 0 || left > 180) left = -left
+                    this.imgEl.style.left = `${left}px`      
+                },  this.interval);
+            }
+        }
+        class Bird extends Picture{
+            constructor(coordinateX, coordinateY, imgSrc, interval){
+                super(coordinateX, coordinateY, imgSrc)
+                this.interval = interval
+                this.getInterval()
+            }
+            getInterval(){
+                setInterval(() => {
+                    const stepX = -180 + Math.floor(Math.random() * (2 * 180 + 1))
+                    const stepY = -180 + Math.floor(Math.random() * (2 * 180 + 1))
+                    const left = parseInt(this.imgEl.style.left)+ stepX
+                    const top = parseInt(this.imgEl.style.top)+ stepY
+                    if (left < 0 || left > 150) left = -left
+                    if (top < 0 || top > 150) top = -top
+                    this.imgEl.style.left = `${left}px`
+                    this.imgEl.style.top = `${top}px`
+                    
+                }, this.interval);
+            }
+        }
+        const imgSrcList = ['./img/house.jpg', './img/dog.png', './img/bird.png']
+        window.onload = function () {
+            const house = new House (80, 60, imgSrcList[0], 1800)
+            const dog = new Dog (70, 120, imgSrcList[1], 900)
+            const bird = new Bird (120, 30, imgSrcList[2], 700)
+        }   
+
+    </script>  
+</body>
+</html>

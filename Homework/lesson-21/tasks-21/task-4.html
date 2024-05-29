@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK 4</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label{
+            margin-bottom: 2px;
+        }
+    </style>
+<body>
+    <h2>
+        Задача 4.
+    </h2>
+    <p>
+        Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) 
+        та оцінку (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку 
+        (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+    </p>
+    <hr>
+    <div id="wrap">
+      
+            <label>Місяць навчання<input type="text" id="month" value=" "></label><br>
+            <label>Оцінка <input type="text" id="rating" value=" "></label><br>
+            <button id="call">Результат</button>
+           
+         <span id="answer"></span>
+    </div>
+    <script>
+   //   ------------опис власних класів помилок
+        class IsNotNumberError extends Error{
+            constructor(){
+                super()
+                this.message = 'Має бути число'
+                this.name = 'IsNotnumberError'
+            }
+        }
+        class IsNoRequiredRange extends Error{
+            constructor(){
+                super()
+                this.message = 'Невірний діапазон чисел'
+                this.name = 'IsNoRequiredRange'
+            }
+        }
+        class IsHolidays extends Error{
+            constructor(){
+                super()
+                this.message = 'Це канікули'
+                this.name = 'IsHolidays'
+            }
+        }
+   //   ----
+   const btnEl = document.getElementById('call')
+     btnEl.addEventListener('click', function validateData() {
+           const valueMomth = parseInt(document.getElementById('month').value)
+           console.log (valueMomth)
+           const valueRating =parseInt(document.getElementById('rating').value)
+           console.log (valueRating)
+           const answerSpan = document.getElementById('answer') 
+                  
+           try {
+                if (isNaN(valueMomth) || isNaN( valueRating)) throw new IsNotNumberError()
+                if (valueMomth < 1 ||  valueMomth > 12 || valueRating < 1 ||  valueRating >100 ) throw new IsNoRequiredRange()
+                 if ( valueMomth >5 &&  valueMomth < 9) throw new IsHolidays()
+            } 
+            catch (error) {
+                if(error instanceof IsNotNumberError){
+                    answerSpan.innerText = error.message
+                    }
+                else if(error instanceof IsNoRequiredRange){
+                    answerSpan.innerText = error.message
+                    }
+                else if(error instanceof IsHolidays){
+                    answerSpan.innerText = error.message
+                    }
+                return false
+            }
+             if(valueRating<50 && valueMomth===5){
+                        answerSpan.innerText = 'Ви не вспієте виправити оцінку до канікул' 
+                     }
+                     else {
+                        answerSpan.innerText = 'Ви маєте час на виправлення оцінки'}
+       })
+        
+    </script>
+</body>
+</html>
